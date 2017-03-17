@@ -2,27 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Options</title>
+    <meta name="Lucia" content="Options"/>
+    <title xml:lang="de">Options</title>
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="styles/options.css">
 </head>
 <body>
 
-#HEADER: <img src="images/big-logo-small.png"> BIG Smart Home
-#NAVIGATION
+<header><img src="images/big-logo-small.png" alt="Business Informatics Group"> BIG Smart Home
+    <nav><a href=""></a></nav>
+</header>
 
-Passwort ändern
+<main>
 
-Altes Passwort
-Input
+    <section>
+    <h1>Passwort &auml;ndern</h1>
 
-Neues Passwort
-Input
+            <form action="" method="post">
+                <p class="item">
+                    <label for="oldpassw">Altes Passwort</label>
+                    <input type="password" id="oldpassw" class="inputfield" name="oldpassw" placeholder="Altes Passwort"/>
+                </p>
 
-Passwort wiederholen
-Input
+    <p class="item"><label for="newpassw">Neues Passwort</label>
+    <input type="password" id="newpassw" name="newpassw" class="inputfield" placeholder="Neues Passwort"/>
+    </p>
 
-Button: Änderungen speichern
+    <p class="item"><label for="repeatpassw">Passwort wiederholen</label>
+    <input type="password" id="repeatpassw" name="repeatpassw" class="inputfield" placeholder="Neues Passwort wiederholen"/></p>
 
-#FOOTER: &#169; 2017 BIG Smart Home
+    <p class="item"><input type="submit" value="&Auml;nderungen speichern" name="action" /></p>
+            </form>
+
+</section>
+</main>
+
+<footer>&#169; 2017 BIG Smart Home</footer>
 
 </body>
 </html>

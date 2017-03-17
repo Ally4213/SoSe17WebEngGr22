@@ -1,19 +1,20 @@
+body{
+    display: flex;
+    flex-direction: column;
+}
 
-main { display: flex; }
+section{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    text-align: center;
+}
+
 
 @media screen and (max-width: 399px) {}
-
-login_max399.png
-login_min400.png
-login_min1200.png
-
-navigation_max599.png
-navigation_min600.png
-
-options_max399.png
-options_min400.png
-options_min1200.png
-
-overview_400.png
-overview_min768.png
-overview_min1200.png

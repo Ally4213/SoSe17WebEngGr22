@@ -3,10 +3,42 @@ body{
     flex-direction: column;
 }
 
-section{
+section {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.group {
+    text-align: center;
+    width: 100%;
+    line-height: 250%;
+}
+
+.item {
+    width: 50%;
+    float: left;
+    text-align: left;
+    display: inline-block;
+}
+
+label {
+    font-size: inherit;
+}
+
+.inputfield {
+    width: 100%;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+.button {
+    width: 50%;
+    text-align: center;
+line-height:250%;
+margin-top: 1%;
+    font-size: inherit;
+    font-family: inherit;
 }
 
 footer{
@@ -17,4 +49,15 @@ footer{
 }
 
 
-@media screen and (max-width: 399px) {}
+
+@media screen and (max-width: 399px) {
+    .item, .button{
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 700px) {
+    .item, .button{
+        width: 45%;
+    }
+}

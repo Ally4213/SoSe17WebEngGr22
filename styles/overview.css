@@ -145,7 +145,7 @@
             text-align: center;
             margin-top: 10px;
         }
-
+        
         @media screen and (min-width: 1200px) {
             .header_button_small {
                 display: none;
@@ -161,7 +161,6 @@
             header li {
                 display: inline-block;
             }
-            
             .box {
                 width: 400px;
             }
@@ -188,7 +187,6 @@
             header li {
                 display: inline-block;
             }
-            
             .box {
                 width: 350px;
             }
@@ -215,10 +213,9 @@
             header li {
                 display: inline-block;
             }
-            
-             .box {
+            .box {
                 width: 320px;
-                 max-width: 400px;
+                max-width: 400px;
             }
             .box_right {
                 width: 240px;

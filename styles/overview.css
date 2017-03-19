@@ -60,13 +60,20 @@ aside {
 	float: right;
 }
 
-
 @media screen and (min-width: 1200px) {
-	
+	.header_button_small {
+		display: none;
+	}
+	main {
+		display: flex;
+		flex-direction: row-reverse;
+	}
 	#box_cont {
 		border-right: 1px solid grey;
 	}
-	
+	header ul, header li {
+		display: inline-block;
+	}
 	.box {
 		width: 400px;
 	}
@@ -79,11 +86,19 @@ aside {
 }
 
 @media screen and (min-width: 768px) and (max-width:1199px) {
-
+	.header_button_small {
+		display: none;
+	}
+	main {
+		display: flex;
+		flex-direction: row-reverse;
+	}
 	#box_cont {
 		border-right: 1px solid grey;
 	}
-	
+	header ul, header li {
+		display: inline-block;
+	}
 	.box {
 		width: 350px;
 	}
@@ -96,11 +111,19 @@ aside {
 }
 
 @media screen and (min-width: 600px) and (max-width: 767px) {
-	
+	.header_button_small {
+		display: none;
+	}
+	main {
+		display: flex;
+		flex-direction: row-reverse;
+	}
 	#box_cont {
 		border-right: 1px solid grey;
 	}
-	
+	header ul, header li {
+		display: inline-block;
+	}
 	.box {
 		width: 320px;
 		max-width: 400px;

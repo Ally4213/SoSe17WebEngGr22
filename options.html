@@ -1,42 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <meta name="Lucia" content="Options"/>
-    <title xml:lang="de">Options</title>
+    <title>Options</title>
     <link rel="stylesheet" type="text/css" href="styles/main.css">
     <link rel="stylesheet" type="text/css" href="styles/options.css">
 </head>
 <body>
 
-<header><img src="images/big-logo-small.png" alt="Business Informatics Group" class="logo"> BIG Smart Home
-    <nav><a href=""></a></nav>
+
+<header>
+    <img src="images/big-logo-small.png" alt="Business Informatics Group" class="logo">
+    <h1>BIG Smart Home</h1>
+    <nav>
+        <ul>
+            <li>
+                <button class="header_button_small">&#9776;</button>
+                <ul>
+                    <li>
+                        <form method="get" action="login.html">
+                            <button class="header_button">Abmelden</button>
+                        </form>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
 </header>
 
 <main>
-
     <section>
+        <h2>Passwort &auml;ndern</h2>
 
-        <h1>Passwort &auml;ndern</h1>
-
-        <form action="" method="post">
+        <form action="set_new_passwd.jsp" method="post" class="container">
             <div class="group">
-                <span class="item"><label for="oldpassw">Altes Passwort</label></span>
-                <span class="item"><input type="password" id="oldpassw" class="inputfield" name="oldpassw" placeholder="Altes Passwort"/></span>
+                <span class="item"><label for="oldpasswd">Altes Passwort</label></span>
+                <span class="item"><input type="password" required id="oldpasswd" class="inputfield" name="oldpasswd" placeholder="Altes Passwort"/></span>
             </div>
 
             <div class="group">
-                <span class="item"><label for="newpassw">Neues Passwort</label></span>
-                <span class="item"><input type="password" id="newpassw" name="newpassw" class="inputfield" placeholder="Neues Passwort"/></span>
+                <span class="item"><label for="newpasswd">Neues Passwort</label></span>
+                <span class="item"><input type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,12}" id="newpasswd" name="newpasswd" class="inputfield" placeholder="Neues Passwort"/></span>
             </div>
 
             <div class="group">
-                <span class="item"><label for="repeatpassw">Passwort wiederholen</label></span>
-                <span class="item"><input type="password" id="repeatpassw" name="repeatpassw" class="inputfield" placeholder="Neues Passwort wiederholen"/></span>
+                <span class="item"><label for="repeatpasswd">Passwort wiederholen</label></span>
+                <span class="item"><input type="password" required id="repeatpasswd" name="repeatpasswd" class="inputfield" placeholder="Neues Passwort wiederholen"/></span>
             </div>
 
             <div class="group">
-                <input class="button" type="submit" value="&Auml;nderungen speichern" name="action" />
+                <input type="submit" value="&Auml;nderungen speichern" name="action" class="button" />
             </div>
         </form>
 

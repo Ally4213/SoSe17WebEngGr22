@@ -1,10 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
+<meta charset="UTF-8">
+<meta name="pagename" content="Login" />
+<meta name="author" content="Astrid" />
+<link rel="stylesheet" type="text/css" href="styles/main.css" />
+<link rel="stylesheet" type="text/css" href="styles/login.css" />
+<title>Login</title>
 </head>
 <body>
+	<header>
+		<img src="images/big-logo-small.png" class="logo"
+			alt="Business Informatics Group" />
+
+		<h1>BIG Smart Home</h1>
+	</header>
+	<div class="maincontent">
+		<h2>Anmelden</h2>
+		<form method="post">
+			<div class="input-group">
+				<div><label for="benutzername">Benutzername</label></div> <input
+					name="benutzername" id="benutzername" type="text">
+				<div class="clear"></div>
+			</div>
+			<div class="input-group">
+				<label for="passwort">Passwort</label> <input name="passwort" id="passwort"
+					type="password">
+				<div class="clear"></div>
+			</div>
+
+			<div class="input-group">
+				<input class="login-button" type="submit" value="Anmelden"
+					name="action" />
+			</div>
+
+
+		</form>
+	</div>
+
+
+
+	<footer>&#169; 2017 BIG Smart Home</footer>
 
 </body>
 </html>

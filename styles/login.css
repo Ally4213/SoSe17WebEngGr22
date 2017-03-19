@@ -1,0 +1,92 @@
+.clear {
+	clear: both;
+}
+
+h2 {
+	margin-left: 0;
+}
+
+.input-group {
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+
+input {
+	border-radius: 5px;
+	border: 1px solid #f1f1f1;
+	width: 58%;
+	height: 25px;
+	margin-left: 30%;
+}
+
+.login-button {
+	height: 35px;
+	color: #ffffff;
+	border-radius: 5px;
+	border: 1px solid #3721c4;
+	text-decoration: none;
+	cursor: pointer;
+	background: #3084f2;
+	background: -moz-linear-gradient(top, #006bac 0%, #003b7c 100%);
+	background: -webkit-linear-gradient(top, #006bac 0%, #003b7c 100%);
+	background: linear-gradient(to bottom, #006bac 0%, #003b7c 100%);
+	margin-left: 10%;
+}
+
+@media ( min-width : 1200px) {
+	.maincontent {
+		margin-left: 10%;
+		margin-top: 2%;
+		margin-right: 10%;
+	}
+	label {
+		float: left;
+	}
+	input {
+		float: right;
+	}
+	.login-button {
+		float: none;
+	}
+}
+
+@media ( min-width : 400px) and ( max-width : 1199px) {
+
+	.maincontent {
+		margin-left: 5%;
+		margin-top: 2%;
+		margin-right: 5%;
+	}
+	label {
+		float: left;
+	}
+	input {
+		float: right;
+		width: 50%;
+	}
+	.login-button {
+		float: none;
+		margin-left: 20%
+	}
+}
+
+@media ( min-width : 0px) and ( max-width : 399px) {
+	
+	label {
+		float: none;
+		margin-left: 10px;
+	}
+	input {
+		float: none;
+		margin-left: 10px;
+		width: 95%;
+	}
+	.login-button {
+		float: none;
+		margin-left: 10px;
+	}
+	
+	h2{
+		margin-left:10px;
+	}
+}

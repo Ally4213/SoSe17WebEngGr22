@@ -1,5 +1,144 @@
+html, body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-  display: flex;
-  font-family: sans-serif;
-  font-size: 12pt;
+    display: flex;
+
+    font-family: sans-serif;
+    font-size: 15px;
+    color: #333333;
+
+    background: #f4f6f9;
+    background: -moz-linear-gradient(top, #f4f6f9 0%, #d3d8e8 100%);
+    background: -webkit-linear-gradient(top, #f4f6f9 0%, #d3d8e8 100%);
+    background: linear-gradient(to bottom, #f4f6f9 0%, #d3d8e8 100%);
+
+}
+
+input.button, button {
+    font-size: inherit;
+    font-family: inherit;
+    color: #ffffff;
+    text-align: center;
+
+    padding: 10px;
+
+    border-radius: 5px;
+    border: 1px solid #003b7c;
+
+    background: #006bac;
+    background: -moz-linear-gradient(top, #006bac 0%, #003b7c 100%);
+    background: -webkit-linear-gradient(top, #006bac 0%, #003b7c 100%);
+    background: linear-gradient(to bottom, #006bac 0%, #003b7c 100%);
+}
+
+
+header {
+    width: 100%;
+    height: 76px;
+
+    padding-left: 12px;
+    padding-right: 12px;
+
+    box-shadow: 0px 2px 10px #888888;
+
+    background: #fc7800;
+    background: -moz-linear-gradient(top, #fc7800 0%, #cc4800 100%);
+    background: -webkit-linear-gradient(top, #fc7800 0%, #cc4800 100%);
+    background: linear-gradient(to bottom, #fc7800 0%, #cc4800 100%);
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+header h1 {
+    font-size: 1.95em;
+    padding: 17px;
+}
+
+header ul,
+header li {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav {
+    margin-left: auto;
+}
+
+footer{
+    position:absolute;
+    bottom:16px;
+    width:100%;
+    text-align: center;
+}
+
+@media screen and (max-width:399px) {
+    header {
+        overflow: visible;
+        width: 100%;
+    }
+
+    header h1 {
+        font-size: 1.6em;
+    }
+
+    nav ul li ul {
+        display: none;
+    }
+
+    nav ul li:hover>ul,
+    nav ul li:active>ul {
+        display: block;
+        z-index: 1;
+        position: absolute;
+        right: 12px;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width:599px) {
+    header {
+        overflow: visible;
+    }
+    
+    header h1 {
+        font-size: 1.6em;
+    }
+
+    nav ul li ul {
+        display: none;
+    }
+
+    nav ul li:hover>ul,
+    nav ul li:active>ul {
+        display: block;
+        z-index: 1;
+        position: absolute;
+
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 767px) {
+    .header_button_small {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width:1199px) {
+    .header_button_small {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .header_button_small {
+        display: none;
+    }
 }

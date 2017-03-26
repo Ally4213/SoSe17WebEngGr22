@@ -60,6 +60,14 @@ aside {
 	float: right;
 }
 
+
+.footer-overview{
+	
+	position:absolute;
+    bottom:16px;
+    width:100%;
+    text-align: center;
+}
 @media screen and (min-width: 1200px) {
 
 	main {
@@ -99,6 +107,13 @@ aside {
 	aside {
 		min-width: 290px;
 	}
+	
+	.footer-overview{
+	
+	position:relative;
+	top: 10px;
+	
+	}
 }
 
 @media screen and (min-width: 600px) and (max-width: 767px) {
@@ -121,6 +136,13 @@ aside {
 	aside {
 		min-width: 250px;
 	}
+	.footer-overview{
+	
+	position:relative;
+	top: 10px;
+	
+	}
+	
 }
 
 @media screen and (min-width: 400px) and (max-width:599px) {
@@ -140,6 +162,13 @@ aside {
 	aside {
 		width: 100%;
 	}
+	
+	.footer-overview{
+	
+	position:relative;
+	top: 10px;
+	
+	}
 }
 
 @media screen and (max-width:399px) {
@@ -158,5 +187,12 @@ aside {
 	}
 	aside {
 		width: 100%;
+	}
+	
+	.footer-overview{
+	
+	position:relative;
+	top: 10px;
+	
 	}
 }

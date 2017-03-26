@@ -61,18 +61,13 @@ aside {
 }
 
 @media screen and (min-width: 1200px) {
-	.header_button_small {
-		display: none;
-	}
+
 	main {
 		display: flex;
 		flex-direction: row-reverse;
 	}
 	#box_cont {
 		border-right: 1px solid grey;
-	}
-	header ul, header li {
-		display: inline-block;
 	}
 	.box {
 		width: 400px;
@@ -86,9 +81,7 @@ aside {
 }
 
 @media screen and (min-width: 768px) and (max-width:1199px) {
-	.header_button_small {
-		display: none;
-	}
+
 	main {
 		display: flex;
 		flex-direction: row-reverse;
@@ -96,9 +89,7 @@ aside {
 	#box_cont {
 		border-right: 1px solid grey;
 	}
-	header ul, header li {
-		display: inline-block;
-	}
+
 	.box {
 		width: 350px;
 	}
@@ -111,9 +102,7 @@ aside {
 }
 
 @media screen and (min-width: 600px) and (max-width: 767px) {
-	.header_button_small {
-		display: none;
-	}
+
 	main {
 		display: flex;
 		flex-direction: row-reverse;
@@ -121,9 +110,7 @@ aside {
 	#box_cont {
 		border-right: 1px solid grey;
 	}
-	header ul, header li {
-		display: inline-block;
-	}
+
 	.box {
 		width: 320px;
 		max-width: 400px;
@@ -137,31 +124,6 @@ aside {
 }
 
 @media screen and (min-width: 400px) and (max-width:599px) {
-	header {
-		overflow: visible;
-	}
-	nav ul li ul {
-		display: none;
-	}
-	.header_button_small {
-		height: 35px;
-		width: 35px;
-		color: #ffffff;
-		border-radius: 5px;
-		border: 1px solid #3721c4;
-		text-decoration: none;
-		cursor: pointer;
-		background: #3084f2;
-		background: -moz-linear-gradient(top, #3084f2 0%, #3721c4 100%);
-		background: -webkit-linear-gradient(top, #3084f2 0%, #3721c4 100%);
-		background: linear-gradient(to bottom, #3084f2 0%, #3721c4 100%);
-	}
-	nav ul li:hover>ul, nav ul li:active>ul {
-		display: block;
-		z-index: 1;
-		position: absolute;
-		right: 5px;
-	}
 	main {
 		display: flex;
 		flex-direction: column;
@@ -181,35 +143,6 @@ aside {
 }
 
 @media screen and (max-width:399px) {
-	header {
-		overflow: visible;
-		width: 100%;
-	}
-	header h1 {
-		font-size: 1.3em;
-	}
-	nav ul li ul {
-		display: none;
-	}
-	.header_button_small {
-		height: 35px;
-		width: 35px;
-		color: #ffffff;
-		border-radius: 5px;
-		border: 1px solid #3721c4;
-		text-decoration: none;
-		cursor: pointer;
-		background: #3084f2;
-		background: -moz-linear-gradient(top, #3084f2 0%, #3721c4 100%);
-		background: -webkit-linear-gradient(top, #3084f2 0%, #3721c4 100%);
-		background: linear-gradient(to bottom, #3084f2 0%, #3721c4 100%);
-	}
-	nav ul li:hover>ul, nav ul li:active>ul {
-		display: block;
-		z-index: 1;
-		position: absolute;
-		right: 5px;
-	}
 	main {
 		display: flex;
 		flex-direction: column;

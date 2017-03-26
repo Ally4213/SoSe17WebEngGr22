@@ -13,10 +13,11 @@ h2 {
 
 input {
 	border-radius: 5px;
-	border: 1px solid #f1f1f1;
+	border: 1px solid #cccccc;;
 	width: 58%;
 	height: 25px;
 	margin-left: 30%;
+	
 }
 
 .login-button {

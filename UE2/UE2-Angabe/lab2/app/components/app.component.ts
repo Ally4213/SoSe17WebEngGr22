@@ -20,10 +20,10 @@ import { Component } from '@angular/core';
       <li class="nav-items">
         <ul>
           <li>
-            <a href="options.html" class="button" accesskey="2">Optionen</a>
+            <a routerLink="/options" class="button" accesskey="2">Optionen</a>
           </li>
           <li>
-            <a href="login.html" class="button" accesskey="1">Abmelden</a>
+            <a routerLink="/login" class="button" accesskey="1">Abmelden</a>
           </li>
         </ul>
       </li>
@@ -36,6 +36,7 @@ import { Component } from '@angular/core';
         <nav>
      <a routerLink="/login">Login</a>
      <a routerLink="/overview">Overview</a>
+     <a routerLink="/options">Options</a> 
    </nav>
    <router-outlet></router-outlet>
 <footer>

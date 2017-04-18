@@ -12,12 +12,13 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var ng2_charts_1 = require('ng2-charts');
-var router_1 = require('@angular/router');
 var app_component_1 = require('./components/app.component');
 var device_detail_component_1 = require('./components/device-detail.component');
 var device_overview_component_1 = require('./components/device-overview.component');
 var device_service_1 = require('./services/device.service');
 var login_component_1 = require('./components/login.component');
+var options_component_1 = require('./components/options.component');
+var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -27,27 +28,14 @@ var AppModule = (function () {
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
                 ng2_charts_1.ChartsModule,
-                router_1.RouterModule.forRoot([
-                    {
-                        path: '',
-                        redirectTo: '/login',
-                        pathMatch: 'full'
-                    },
-                    {
-                        path: 'overview',
-                        component: device_overview_component_1.DeviceOverviewComponent
-                    },
-                    {
-                        path: 'login',
-                        component: login_component_1.LoginComponent
-                    }
-                ])
+                app_routing_module_1.AppRoutingModule
             ],
             declarations: [
                 app_component_1.AppComponent,
                 device_detail_component_1.DeviceDetailComponent,
                 device_overview_component_1.DeviceOverviewComponent,
-                login_component_1.LoginComponent
+                login_component_1.LoginComponent,
+                options_component_1.OptionsComponent
             ],
             providers: [
                 device_service_1.DeviceService

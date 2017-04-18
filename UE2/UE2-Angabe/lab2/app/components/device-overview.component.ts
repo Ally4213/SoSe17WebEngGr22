@@ -63,17 +63,13 @@ import { OnInit } from '@angular/core';
   
 
 export class DeviceOverviewComponent implements OnInit {
-  title: string = "Ally's Angular App";
   devices :Device[];
   selectedDevice: Device;
   
   constructor(private deviceService: DeviceService) { }
   
   getDevices(): void {
-   console.log('get devices called in app component');
-    console.log('devices currently contains' + this.devices);
     this.deviceService.getDevices().then(devices => this.devices = devices );
-    console.log('devices currently contains' + this.devices);
   }
   
   ngOnInit(): void {

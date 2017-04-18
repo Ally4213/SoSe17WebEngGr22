@@ -8,11 +8,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+// Keep the Input import for now, you'll remove it later:
 var device_1 = require('../model/device');
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var common_1 = require('@angular/common');
+var device_service_1 = require('../services/device.service');
+require('rxjs/add/operator/switchMap');
 var DeviceDetailComponent = (function () {
-    function DeviceDetailComponent() {
+    function DeviceDetailComponent(deviceService, route, location) {
+        this.deviceService = deviceService;
+        this.route = route;
+        this.location = location;
     }
+    DeviceDetailComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params
+            .switchMap(function (params) { return _this.deviceService.getDevice(params['id']); })
+            .subscribe(function (device) { return _this.device = device; });
+    };
+    DeviceDetailComponent.prototype.goBack = function () {
+        this.location.back();
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', device_1.Device)
@@ -20,9 +37,20 @@ var DeviceDetailComponent = (function () {
     DeviceDetailComponent = __decorate([
         core_1.Component({
             selector: 'device-detail',
-            template: "\n    <div *ngIf=\"device\">\n      <h2>{{device.display_name}} details!</h2>\n      <div><label>id: </label>{{device.id}}</div>\n      <div>\n        <label>name: </label>\n        <input [(ngModel)]=\"device.display_name\" placeholder=\"name\"/>\n      </div>\n    </div>\n  "
+            //  template: `
+            //    <div *ngIf="device">
+            //      <h2>{{device.display_name}} details!</h2>
+            //      <div><label>id: </label>{{device.id}}</div>
+            //      <div>
+            //        <label>name: </label>
+            //        <input [(ngModel)]="device.display_name" placeholder="name"/>
+            //      </div>
+            //      <button (click)="goBack()">Back</button>
+            //    </div>
+            //  `
+            templateUrl: '../app/views/devicedetail.component.html',
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [device_service_1.DeviceService, router_1.ActivatedRoute, common_1.Location])
     ], DeviceDetailComponent);
     return DeviceDetailComponent;
 }());

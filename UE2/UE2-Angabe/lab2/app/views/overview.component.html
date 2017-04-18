@@ -29,7 +29,7 @@
 	<div class="devices">
 		<div *ngFor="let device of devices" class="device-outer"
 			data-device-id={device.id}>
-			<a href="details.html" class="device"
+			<a [routerLink]="['/detail', device.id]" class="device"
 				title="Genauere Informationen zu diesem Thermometer">
 				<dl class="device-properties">
 					<dt>Anzeigename</dt>

@@ -13,14 +13,10 @@ var core_1 = require('@angular/core');
 var DeviceOverviewComponent = (function () {
     function DeviceOverviewComponent(deviceService) {
         this.deviceService = deviceService;
-        this.title = "Ally's Angular App";
     }
     DeviceOverviewComponent.prototype.getDevices = function () {
         var _this = this;
-        console.log('get devices called in app component');
-        console.log('devices currently contains' + this.devices);
         this.deviceService.getDevices().then(function (devices) { return _this.devices = devices; });
-        console.log('devices currently contains' + this.devices);
     };
     DeviceOverviewComponent.prototype.ngOnInit = function () {
         console.log('in function ngOnInit');

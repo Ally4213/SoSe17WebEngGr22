@@ -32,7 +32,12 @@
     </div>
     <div class="details-holder">
 	<div *ngFor="let controlUnit of device.control_units" class="details-outer">
-	{{controlUnit.type}}
+	<div [ngSwitch]="controlUnit.type">
+	<my-boolean-control *ngSwitchCase=0></my-boolean-control>
+	<my-enum-control *ngSwitchCase=1></my-enum-control>
+	<my-continuous-control *ngSwitchCase=2></my-continuous-control>
+	</div>
+
 	</div>
       <!-- Steuerung für kontinuierliche Werte -->
       <div class="details-outer">

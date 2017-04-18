@@ -18,6 +18,9 @@ var device_overview_component_1 = require('./components/device-overview.componen
 var device_service_1 = require('./services/device.service');
 var login_component_1 = require('./components/login.component');
 var options_component_1 = require('./components/options.component');
+var controlTypeContinuous_component_1 = require('./components/controlTypeContinuous.component');
+var controlTypeEnum_component_1 = require('./components/controlTypeEnum.component');
+var controlTypeBoolean_component_1 = require('./components/controlTypeBoolean.component');
 var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
     function AppModule() {
@@ -35,7 +38,10 @@ var AppModule = (function () {
                 device_detail_component_1.DeviceDetailComponent,
                 device_overview_component_1.DeviceOverviewComponent,
                 login_component_1.LoginComponent,
-                options_component_1.OptionsComponent
+                options_component_1.OptionsComponent,
+                controlTypeBoolean_component_1.ControlTypeBooleanComponent,
+                controlTypeContinuous_component_1.ControlTypeContinuousComponent,
+                controlTypeEnum_component_1.ControlTypeEnumComponent
             ],
             providers: [
                 device_service_1.DeviceService

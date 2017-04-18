@@ -39,7 +39,7 @@ import { Component } from '@angular/core';
      <a routerLink="/options">Options</a> 
    </nav>
    <router-outlet></router-outlet>
-<footer>
+  <footer>
   © 2017 BIG Smart Home
 </footer>
   `

@@ -9,6 +9,12 @@ import { DeviceOverviewComponent } from './components/device-overview.component'
 import { DeviceService } from './services/device.service'
 import { LoginComponent }   from './components/login.component';
 import { OptionsComponent }   from './components/options.component';
+import { ControlTypeContinuousComponent } from './components/controlTypeContinuous.component';
+import { ControlTypeEnumComponent } from './components/controlTypeEnum.component';
+import { ControlTypeBooleanComponent } from './components/controlTypeBoolean.component';
+
+
+
 
 import { AppRoutingModule }     from './app-routing.module';
 
@@ -25,7 +31,10 @@ import { AppRoutingModule }     from './app-routing.module';
     DeviceDetailComponent,
     DeviceOverviewComponent,
     LoginComponent,
-    OptionsComponent
+    OptionsComponent,
+    ControlTypeBooleanComponent,
+    ControlTypeContinuousComponent,
+    ControlTypeEnumComponent
   ],
   providers: [
     DeviceService

@@ -59,12 +59,8 @@ var ControlTypeContinuousComponent = (function () {
         }
         this.lineChartData = _lineChartData;
     };
-    // events
-    ControlTypeContinuousComponent.prototype.chartClicked = function (e) {
-        console.log(e);
-    };
-    ControlTypeContinuousComponent.prototype.chartHovered = function (e) {
-        console.log(e);
+    ControlTypeContinuousComponent.prototype.addEntry = function () {
+        /**TODO! **/
     };
     __decorate([
         core_1.Input(), 
@@ -74,7 +70,7 @@ var ControlTypeContinuousComponent = (function () {
         core_1.Component({
             selector: 'my-continuous-control',
             templateUrl: '../app/views/controlTypeContinuous.component.html',
-            styles: ["\n    canvas{\n      width:600px !important;\n      height:300px !important;\n      padding-left: 10%;\n    }\n  "
+            styles: ["\n    canvas{\n      width:600px !important;\n      height:300px !important;\n      padding-left: 10%;\n    }\n  .log{\n  float: left;\nwidth:45%;\nmargin-left:2.5% !important;\nmargin-right:2.5% !important;\nmargin-bottom: 10px;\nborder: 1px dotted black;\nheight: 180px;\n}\n\n  .description{\n  float: right;\nwidth:45%;\ntext-align: left;\nmargin-left:1.5% !important;\nmargin-right:2.5% !important;\n\n}\n  "
             ],
         }), 
         __metadata('design:paramtypes', [])

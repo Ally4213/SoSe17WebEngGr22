@@ -12,6 +12,24 @@ import { Location }                 from '@angular/common';
       height:300px !important;
       padding-left: 10%;
     }
+  .log{
+  float: left;
+width:45%;
+margin-left:2.5% !important;
+margin-right:2.5% !important;
+margin-bottom: 10px;
+border: 1px dotted black;
+height: 180px;
+}
+
+  .description{
+  float: right;
+width:45%;
+text-align: left;
+margin-left:1.5% !important;
+margin-right:2.5% !important;
+
+}
   `
   ],
 })
@@ -69,12 +87,7 @@ export class ControlTypeContinuousComponent {
     this.lineChartData = _lineChartData;
   }
  
-  // events
-  public chartClicked(e:any):void {
-    console.log(e);
-  }
- 
-  public chartHovered(e:any):void {
-    console.log(e);
-  }
+ public addEntry():void{
+  /**TODO! **/
+ }
  }

@@ -2,10 +2,32 @@
 
 <div *ngIf="controlUnit">
 
-<div>ControlUnit Name: {{controlUnit.name}}</div>
-<div>ControlUnit Current value: {{controlUnit.current}}</div>
-<div>ControlUnit is Primary Control: {{controlUnit.primary}}</div>
-<div>ControlUnit Values (should be empty here, as only available in enum): {{controlUnit.values}}</div>
-<div>ControlUnit min Value: {{controlUnit.min}}</div>
-<div>ControlUnit max Value: {{controlUnit.max}}</div>
+	<div>ControlUnit Name: {{controlUnit.name}}</div>
+	<div>ControlUnit Current value: {{controlUnit.current}}</div>
+	<div>ControlUnit is Primary Control: {{controlUnit.primary}}</div>
+	<div>ControlUnit Values (should be empty here, as only available
+		in enum): {{controlUnit.values}}</div>
+	<div>ControlUnit min Value: {{controlUnit.min}}</div>
+	<div>ControlUnit max Value: {{controlUnit.max}}</div>
 </div>
+
+<div>
+	<div>
+		<div style="display: block;">
+			<canvas baseChart width="50" height="50" [datasets]="lineChartData"
+				[labels]="lineChartLabels" [options]="lineChartOptions"
+				[colors]="lineChartColors" [legend]="lineChartLegend"
+				[chartType]="lineChartType" (chartHover)="chartHovered($event)"
+				(chartClick)="chartClicked($event)"></canvas>
+		</div>
+	</div>
+	<div class="log-and-settings-row">
+		<div class="log">
+		</div>
+		<div class=description>
+		<h3> {{controlUnit.name}}</h3>
+		<h4>derzeit: {{controlUnit.current}}</h4>
+		</div>
+	</div>
+</div>
+

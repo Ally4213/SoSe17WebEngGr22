@@ -1,6 +1,13 @@
-import { Component } from '@angular/core';
+import { ControlUnit } from '../model/controlUnit';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Params }   from '@angular/router';
+import { Location }                 from '@angular/common';
+
 @Component({
   selector: 'my-continuous-control',
-  template:'<h3>Here comes the continuous control component</h3>',
+  templateUrl: '../app/views/controlTypeContinuous.component.html',
 })
-export class ControlTypeContinuousComponent { }
+export class ControlTypeContinuousComponent {
+  
+  @Input() controlUnit: ControlUnit
+ }

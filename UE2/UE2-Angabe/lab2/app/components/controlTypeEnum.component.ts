@@ -1,6 +1,15 @@
-import { Component } from '@angular/core';
+import { ControlUnit } from '../model/controlUnit';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Params }   from '@angular/router';
+import { Location }                 from '@angular/common';
+
 @Component({
   selector: 'my-enum-control',
-  template:'<h3>Here comes the enum control component</h3>',
+templateUrl: '../app/views/controlTypeEnum.component.html',
+
 })
-export class ControlTypeEnumComponent { }
+export class ControlTypeEnumComponent {
+  
+  @Input() controlUnit: ControlUnit
+  
+ }

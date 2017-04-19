@@ -8,14 +8,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var controlUnit_1 = require('../model/controlUnit');
 var core_1 = require('@angular/core');
 var ControlTypeContinuousComponent = (function () {
     function ControlTypeContinuousComponent() {
     }
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', controlUnit_1.ControlUnit)
+    ], ControlTypeContinuousComponent.prototype, "controlUnit", void 0);
     ControlTypeContinuousComponent = __decorate([
         core_1.Component({
             selector: 'my-continuous-control',
-            template: '<h3>Here comes the continuous control component</h3>',
+            templateUrl: '../app/views/controlTypeContinuous.component.html',
         }), 
         __metadata('design:paramtypes', [])
     ], ControlTypeContinuousComponent);

@@ -22,7 +22,6 @@ var DeviceService = (function () {
      * @returns {Promise<Device[]>}
      */
     DeviceService.prototype.getDevices = function () {
-        console.log('get devices called in device service');
         return Promise.resolve(mock_devices_1.DEVICES);
     };
     /**

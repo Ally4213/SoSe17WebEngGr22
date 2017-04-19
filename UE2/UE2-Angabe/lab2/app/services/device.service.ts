@@ -14,7 +14,6 @@ export class DeviceService {
    * @returns {Promise<Device[]>}
    */
   getDevices(): Promise<Device[]> {
-    console.log('get devices called in device service');
     return Promise.resolve(DEVICES);
   }
 

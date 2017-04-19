@@ -8,14 +8,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var controlUnit_1 = require('../model/controlUnit');
 var core_1 = require('@angular/core');
 var ControlTypeEnumComponent = (function () {
     function ControlTypeEnumComponent() {
     }
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', controlUnit_1.ControlUnit)
+    ], ControlTypeEnumComponent.prototype, "controlUnit", void 0);
     ControlTypeEnumComponent = __decorate([
         core_1.Component({
             selector: 'my-enum-control',
-            template: '<h3>Here comes the enum control component</h3>',
+            templateUrl: '../app/views/controlTypeEnum.component.html',
         }), 
         __metadata('design:paramtypes', [])
     ], ControlTypeEnumComponent);

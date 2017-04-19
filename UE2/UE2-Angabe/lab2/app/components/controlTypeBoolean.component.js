@@ -8,14 +8,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var controlUnit_1 = require('../model/controlUnit');
 var core_1 = require('@angular/core');
 var ControlTypeBooleanComponent = (function () {
     function ControlTypeBooleanComponent() {
     }
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', controlUnit_1.ControlUnit)
+    ], ControlTypeBooleanComponent.prototype, "controlUnit", void 0);
     ControlTypeBooleanComponent = __decorate([
         core_1.Component({
             selector: 'my-boolean-control',
-            template: '<h3>Here comes the boolean control component</h3>',
+            templateUrl: '../app/views/controlTypeBoolean.component.html',
         }), 
         __metadata('design:paramtypes', [])
     ], ControlTypeBooleanComponent);

@@ -33,9 +33,9 @@
     <div class="details-holder">
 	<div *ngFor="let controlUnit of device.control_units" class="details-outer">
 	<div [ngSwitch]="controlUnit.type">
-	<my-boolean-control *ngSwitchCase=0></my-boolean-control>
-	<my-enum-control *ngSwitchCase=1></my-enum-control>
-	<my-continuous-control *ngSwitchCase=2></my-continuous-control>
+	<my-boolean-control [controlUnit]=controlUnit *ngSwitchCase=0></my-boolean-control>
+	<my-enum-control [controlUnit]=controlUnit *ngSwitchCase=1></my-enum-control>
+	<my-continuous-control [controlUnit]=controlUnit *ngSwitchCase=2></my-continuous-control>
 	</div>
 
 	</div>

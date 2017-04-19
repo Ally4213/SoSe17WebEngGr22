@@ -37,17 +37,6 @@ var DeviceDetailComponent = (function () {
     DeviceDetailComponent = __decorate([
         core_1.Component({
             selector: 'device-detail',
-            //  template: `
-            //    <div *ngIf="device">
-            //      <h2>{{device.display_name}} details!</h2>
-            //      <div><label>id: </label>{{device.id}}</div>
-            //      <div>
-            //        <label>name: </label>
-            //        <input [(ngModel)]="device.display_name" placeholder="name"/>
-            //      </div>
-            //      <button (click)="goBack()">Back</button>
-            //    </div>
-            //  `
             templateUrl: '../app/views/devicedetail.component.html',
         }), 
         __metadata('design:paramtypes', [device_service_1.DeviceService, router_1.ActivatedRoute, common_1.Location])

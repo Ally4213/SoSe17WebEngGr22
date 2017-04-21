@@ -19,9 +19,23 @@ var DeviceOverviewComponent = (function () {
         this.deviceService.getDevices().then(function (devices) { return _this.devices = devices; });
     };
     DeviceOverviewComponent.prototype.ngOnInit = function () {
-        console.log('in function ngOnInit');
         this.getDevices();
-        console.log('get devices called');
+    };
+    DeviceOverviewComponent.prototype.ngAfterViewChecked = function () {
+        if (this.devices === undefined) {
+            return;
+        }
+        else {
+            console.log(this.devices);
+            this.drawDeviceImgs(this.devices);
+        }
+    };
+    DeviceOverviewComponent.prototype.drawDeviceImgs = function (devices) {
+        devices.forEach(function (device) {
+            console.log("calling draw_device in overview with args");
+            device.draw_image(device.id, device.image, device.control_units[0].min, device.control_units[0].max, device.control_units[0].current, device.control_units[0].values);
+        });
+        console.log("called draw_device in overview with args");
     };
     DeviceOverviewComponent.prototype.onSelect = function (device) {
         this.selectedDevice = device;

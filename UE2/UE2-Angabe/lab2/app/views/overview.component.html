@@ -30,7 +30,7 @@
 		<div *ngFor="let device of devices" class="device-outer"
 			data-device-id={device.id}>
 			<a [routerLink]="['/detail', device.id]" class="device"
-				title="Genauere Informationen zu diesem Thermometer">
+				title="Genauere Informationen f&uuml; {{device.type}}">
 				<dl class="device-properties">
 					<dt>Anzeigename</dt>
 					<dd class="device-displayname">{{device.display_name}}</dd>
@@ -42,6 +42,7 @@
 				<div class="device-image-container">
 					<img class="device-image" width="180" height="180"
 						[src]="device.image" [alt]="device.image_alt">
+						
 				</div>
 			</a>
 			<ul class="device-actions">
@@ -54,3 +55,4 @@
 	</div>
 	</main>
 </div>
+

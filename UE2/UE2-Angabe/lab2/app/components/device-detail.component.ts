@@ -8,6 +8,7 @@ import { DeviceService } from '../services/device.service';
 
 import 'rxjs/add/operator/switchMap';
 
+
 @Component({
   selector: 'device-detail',
   templateUrl: '../app/views/devicedetail.component.html',
@@ -28,7 +29,10 @@ export class DeviceDetailComponent implements OnInit {
   this.route.params
     .switchMap((params: Params) => this.deviceService.getDevice(params['id']))
     .subscribe(device => this.device = device);
-}
+//  this.device.draw_image(this.device.id, this.device.image, this.device.control_units[0].min, this.device.control_units[0].max, this.device.control_units[0].current,this.device.control_units[0].values);
+ 
+}
+  
   goBack(): void {
   this.location.back();
 }

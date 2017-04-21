@@ -26,6 +26,7 @@ var DeviceDetailComponent = (function () {
         this.route.params
             .switchMap(function (params) { return _this.deviceService.getDevice(params['id']); })
             .subscribe(function (device) { return _this.device = device; });
+        //  this.device.draw_image(this.device.id, this.device.image, this.device.control_units[0].min, this.device.control_units[0].max, this.device.control_units[0].current,this.device.control_units[0].values);
     };
     DeviceDetailComponent.prototype.goBack = function () {
         this.location.back();

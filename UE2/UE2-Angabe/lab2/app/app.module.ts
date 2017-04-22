@@ -12,7 +12,9 @@ import { OptionsComponent }   from './components/options.component';
 import { ControlTypeContinuousComponent } from './components/controlTypeContinuous.component';
 import { ControlTypeEnumComponent } from './components/controlTypeEnum.component';
 import { ControlTypeBooleanComponent } from './components/controlTypeBoolean.component';
-
+import { FooterComponent } from './components/footer.component';
+import { HeaderLoggedInComponent } from './components/header-loggedIn.component';
+import { HeaderLogged0utComponent } from './components/header-loggedOut.component';
 
 
 
@@ -34,7 +36,10 @@ import { AppRoutingModule }     from './app-routing.module';
     OptionsComponent,
     ControlTypeBooleanComponent,
     ControlTypeContinuousComponent,
-    ControlTypeEnumComponent
+    ControlTypeEnumComponent,
+    FooterComponent,
+    HeaderLoggedInComponent,
+    HeaderLogged0utComponent
   ],
   providers: [
     DeviceService

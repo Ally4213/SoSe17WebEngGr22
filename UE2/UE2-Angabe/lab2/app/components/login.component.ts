@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FooterComponent } from './footer.component';
 
 @Component({
   selector: 'my-login',

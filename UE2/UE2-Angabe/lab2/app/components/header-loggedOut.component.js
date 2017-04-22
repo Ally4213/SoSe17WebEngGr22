@@ -9,19 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = "BIG Smart Home";
+var HeaderLogged0utComponent = (function () {
+    function HeaderLogged0utComponent() {
     }
-    AppComponent = __decorate([
+    HeaderLogged0utComponent = __decorate([
         core_1.Component({
-            moduleId: module.id,
-            selector: 'my-app',
-            templateUrl: '../views/app.component.html',
+            selector: 'my-logged-out-header',
+            templateUrl: '../app/views/header-logged-out.component.html',
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], HeaderLogged0utComponent);
+    return HeaderLogged0utComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.HeaderLogged0utComponent = HeaderLogged0utComponent;
+//# sourceMappingURL=header-loggedOut.component.js.map

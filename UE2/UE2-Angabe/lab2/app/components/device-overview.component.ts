@@ -23,19 +23,32 @@ export class DeviceOverviewComponent implements OnInit {
   getDevices(): void {
     
     this.deviceService.getDevices().then(devices => this.devices = devices);
+    if(this.devices === undefined){
+    return;
+    }
+    else{
+   LoadSVGToDom();
+    console.log(this.devices);
+    this.drawDeviceImgs(this.devices);
+    }
   
   }
   
   ngOnInit(): void {
     this.getDevices();
+    
   }
  
-  ngAfterViewChecked(){
+  ngDoCheck(){
     if(this.devices === undefined){
     return;
     }
     else{
-    /**LoadSVGToDom();**/
+   /*
+   * needed for loading of svg pictures in overview - 
+   * otherwise they can't call the draw function and manipulate the svgs.
+   */
+   LoadSVGToDom();
     console.log(this.devices);
     this.drawDeviceImgs(this.devices);
     }
@@ -44,9 +57,9 @@ export class DeviceOverviewComponent implements OnInit {
   
  drawDeviceImgs(devices : Device[]) : void{
      devices.forEach((device)=>{
-         console.log("calling draw_device in overview with args");
+         
          device.draw_image(device.id, device.image, device.control_units[0].min, device.control_units[0].max, device.control_units[0].current, device.control_units[0].values)});
-         console.log("called draw_device in overview with args"); 
+       
    
  }
       

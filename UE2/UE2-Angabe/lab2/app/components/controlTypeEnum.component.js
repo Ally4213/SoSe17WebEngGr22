@@ -12,7 +12,19 @@ var controlUnit_1 = require('../model/controlUnit');
 var core_1 = require('@angular/core');
 var ControlTypeEnumComponent = (function () {
     function ControlTypeEnumComponent() {
+        // PolarArea
+        this.polarAreaChartLabels = ['Download Sales', 'In-Store Sales', 'Mail Sales', 'Telesales', 'Corporate Sales'];
+        this.polarAreaChartData = [300, 500, 100, 40, 120];
+        this.polarAreaLegend = true;
+        this.polarAreaChartType = 'polarArea';
     }
+    // events
+    ControlTypeEnumComponent.prototype.chartClicked = function (e) {
+        console.log(e);
+    };
+    ControlTypeEnumComponent.prototype.chartHovered = function (e) {
+        console.l;
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', controlUnit_1.ControlUnit)

@@ -1,12 +1,12 @@
 import { ControlUnit } from '../model/controlUnit';
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params }   from '@angular/router';
-import { Location }                 from '@angular/common';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'my-continuous-control',
   templateUrl: '../app/views/controlTypeContinuous.component.html',
-  styles:[`
+  styles: [`
     canvas{
       width:600px !important;
       height:300px !important;
@@ -34,35 +34,35 @@ margin-right:2.5% !important;
   ],
 })
 export class ControlTypeContinuousComponent {
-  
-  @Input() controlUnit: ControlUnit
-  
-   // lineChart
-  public lineChartData:Array<any> = [
 
-    {data: [], label: 'Verlauf'},
-];
-  
-  ngOnInit():void{
-  if(this.controlUnit === undefined){
-    return;
+  @Input() controlUnit: ControlUnit
+
+  // lineChart
+  public lineChartData: Array<any> = [
+
+    { data: [], label: 'Verlauf' },
+  ];
+
+  ngOnInit(): void {
+    if (this.controlUnit === undefined) {
+      return;
     }
-    else{
- 
-    this.lineChartData[0].data.push(this.generateDataEntry());
+    else {
+
+      this.lineChartData[0].data.push(this.generateDataEntry());
     }
-  
+
   }
 
-  
-  
-  public dateTime : String = new Date().toLocaleString();
-  
-  public lineChartLabels:Array<any> = [this.dateTime];
-  public lineChartOptions:any = {
+
+
+  public dateTime: String = new Date().toLocaleString();
+
+  public lineChartLabels: Array<any> = [this.dateTime];
+  public lineChartOptions: any = {
     responsive: true
   };
-  public lineChartColors:Array<any> = [
+  public lineChartColors: Array<any> = [
     { // grey
       backgroundColor: 'rgba(148,159,177,0.2)',
       borderColor: 'rgba(148,159,177,1)',
@@ -88,41 +88,41 @@ export class ControlTypeContinuousComponent {
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     }
   ];
-  public lineChartLegend:boolean = true;
-  public lineChartType:string = 'line';
- 
+  public lineChartLegend: boolean = true;
+  public lineChartType: string = 'line';
 
 
 
- 
-  public randomize():void {
-    let _lineChartData:Array<any> = new Array(this.lineChartData.length);
+
+
+  public randomize(): void {
+    let _lineChartData: Array<any> = new Array(this.lineChartData.length);
     for (let i = 0; i < this.lineChartData.length; i++) {
-      _lineChartData[i] = {data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label};
+      _lineChartData[i] = { data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label };
       for (let j = 0; j < this.lineChartData[i].data.length; j++) {
         _lineChartData[i].data[j] = Math.floor((Math.random() * 100) + 1);
       }
     }
     this.lineChartData = _lineChartData;
   }
-  
-  public generateCurrentDateTime() : String{
-    return  new Date().toLocaleString();
-  
+
+  public generateCurrentDateTime(): String {
+    return new Date().toLocaleString();
+
   }
-  public generateDataEntry() : number{
-   if(this.controlUnit === undefined){
-    return;
+  public generateDataEntry(): number {
+    if (this.controlUnit === undefined) {
+      return;
     }
-    else{
-    return this.controlUnit.current;
+    else {
+      return this.controlUnit.current;
     }
-   
+
   }
- 
- public addEntry():void{
-  /**TODO! **/
-   this.lineChartLabels.push(this.generateCurrentDateTime());
-   this.lineChartData[0].data.push(this.generateDataEntry());
-   }
- }
+
+  public addEntry(): void {
+    /**TODO! **/
+    this.lineChartLabels.push(this.generateCurrentDateTime());
+    this.lineChartData[0].data.push(this.generateDataEntry());
+  }
+}

@@ -9,19 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = "BIG Smart Home";
+var HeaderLoggedInComponent = (function () {
+    function HeaderLoggedInComponent() {
     }
-    AppComponent = __decorate([
+    HeaderLoggedInComponent = __decorate([
         core_1.Component({
-            moduleId: module.id,
-            selector: 'my-app',
-            templateUrl: '../views/app.component.html',
+            selector: 'my-enum-control',
+            templateUrl: '../app/views/controlTypeEnum.component.html',
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], HeaderLoggedInComponent);
+    return HeaderLoggedInComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.HeaderLoggedInComponent = HeaderLoggedInComponent;
+//# sourceMappingURL=header.component.js.map

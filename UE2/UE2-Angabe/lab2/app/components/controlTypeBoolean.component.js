@@ -12,7 +12,18 @@ var controlUnit_1 = require('../model/controlUnit');
 var core_1 = require('@angular/core');
 var ControlTypeBooleanComponent = (function () {
     function ControlTypeBooleanComponent() {
+        // Doughnut
+        this.doughnutChartLabels = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
+        this.doughnutChartData = [350, 450, 100];
+        this.doughnutChartType = 'doughnut';
     }
+    // events
+    ControlTypeBooleanComponent.prototype.chartClicked = function (e) {
+        console.log(e);
+    };
+    ControlTypeBooleanComponent.prototype.chartHovered = function (e) {
+        console.log(e);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', controlUnit_1.ControlUnit)

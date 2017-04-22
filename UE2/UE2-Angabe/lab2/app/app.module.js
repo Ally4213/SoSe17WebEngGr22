@@ -21,6 +21,9 @@ var options_component_1 = require('./components/options.component');
 var controlTypeContinuous_component_1 = require('./components/controlTypeContinuous.component');
 var controlTypeEnum_component_1 = require('./components/controlTypeEnum.component');
 var controlTypeBoolean_component_1 = require('./components/controlTypeBoolean.component');
+var footer_component_1 = require('./components/footer.component');
+var header_loggedIn_component_1 = require('./components/header-loggedIn.component');
+var header_loggedOut_component_1 = require('./components/header-loggedOut.component');
 var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
     function AppModule() {
@@ -41,7 +44,10 @@ var AppModule = (function () {
                 options_component_1.OptionsComponent,
                 controlTypeBoolean_component_1.ControlTypeBooleanComponent,
                 controlTypeContinuous_component_1.ControlTypeContinuousComponent,
-                controlTypeEnum_component_1.ControlTypeEnumComponent
+                controlTypeEnum_component_1.ControlTypeEnumComponent,
+                footer_component_1.FooterComponent,
+                header_loggedIn_component_1.HeaderLoggedInComponent,
+                header_loggedOut_component_1.HeaderLogged0utComponent
             ],
             providers: [
                 device_service_1.DeviceService

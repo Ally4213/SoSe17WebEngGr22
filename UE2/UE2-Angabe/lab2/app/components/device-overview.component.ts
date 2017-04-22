@@ -51,8 +51,8 @@ export class DeviceOverviewComponent implements OnInit {
  }
       
   onSelect(device: Device): void {
-  this.selectedDevice = device;
+    this.selectedDevice = device;
     
-    }
-  
+  }
+
 }

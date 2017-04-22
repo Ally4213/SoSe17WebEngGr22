@@ -9,10 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
 var LoginComponent = (function () {
     function LoginComponent() {
-        this.LogIn = { "username": "", "password": "" };
+        this.formData = { "username": "", "password": "" };
     }
+    LoginComponent.prototype.submitFormData = function () {
+        if (this.loginForm.valid) {
+            console.log(this.formData);
+        }
+    };
+    __decorate([
+        core_1.ViewChild('loginForm'), 
+        __metadata('design:type', forms_1.NgForm)
+    ], LoginComponent.prototype, "loginForm", void 0);
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'my-login',

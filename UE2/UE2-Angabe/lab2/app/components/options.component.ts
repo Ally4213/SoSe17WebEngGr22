@@ -8,18 +8,14 @@ import { NgForm } from '@angular/forms';
 export class OptionsComponent {
 
   @ViewChild('changePasswordForm') changePasswordForm: NgForm;
-
-  ChangePassword = { "oldpw": "", "newpw1": "", "newpw2": ""}
-
-
+  formData = { "oldpw": "", "newpw1": "", "newpw2": ""}
 
   submitFormData(){
-
     if(this.changePasswordForm.valid){
       this.changePasswordForm.reset();
       alert("Change was submitted.");
+      console.log(this.formData);
     }
-
   }
 
 }

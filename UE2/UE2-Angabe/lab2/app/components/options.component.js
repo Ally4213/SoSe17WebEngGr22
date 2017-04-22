@@ -12,12 +12,13 @@ var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
 var OptionsComponent = (function () {
     function OptionsComponent() {
-        this.ChangePassword = { "oldpw": "", "newpw1": "", "newpw2": "" };
+        this.formData = { "oldpw": "", "newpw1": "", "newpw2": "" };
     }
     OptionsComponent.prototype.submitFormData = function () {
         if (this.changePasswordForm.valid) {
             this.changePasswordForm.reset();
             alert("Change was submitted.");
+            console.log(this.formData);
         }
     };
     __decorate([

@@ -41,6 +41,9 @@ var DeviceOverviewComponent = (function () {
     DeviceOverviewComponent.prototype.onSelect = function (device) {
         this.selectedDevice = device;
     };
+    DeviceOverviewComponent.prototype.onEdit = function (device) {
+        this.selectedDevice = device;
+    };
     DeviceOverviewComponent = __decorate([
         core_1.Component({
             selector: 'my-devices',

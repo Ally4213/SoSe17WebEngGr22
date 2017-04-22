@@ -55,4 +55,8 @@ export class DeviceOverviewComponent implements OnInit {
     
   }
 
+    onEdit(device: Device): void {
+        this.selectedDevice = device;
+    }
+
 }

@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
+
 @Component({
   selector: 'my-login',
   templateUrl: '../app/views/login.component.html',
 })
-export class LoginComponent { }
+export class LoginComponent {
+
+  LogIn = { "username": "", "password": ""}
+
+}

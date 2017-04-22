@@ -1,35 +1,44 @@
 <div class="main-container">
   <main aria-labelledby="formheadline">
-    <form class="form" method="post">
-      <h2 id="formheadline" class="options-headline">Passwort ändern</h2>
+
+    <form class="form" method="post" #changePasswordForm="ngForm">
+      <h2 id="formheadline" class="options-headline">Passwort Ã¤ndern</h2>
       <div class="form-row">
         <label class="form-label" for="old-password-input">
           Altes Passwort
         </label>
-        <input type="password" name="password" id="old-password-input" required class="form-input"
-               placeholder="Altes Passwort">
-        <span id="old-password-error" class="error-text"></span>
+        <input type="password" name="oldpw" id="old-password-input" class="form-input" placeholder="Altes Passwort"
+               [(ngModel)]="ChangePassword.oldpw" #pw0="ngModel" required
+        >
+        <span id="old-password-error" class="error-text" [hidden]="pw0.valid || pw0.pristine">Please enter the old password!</span>
+
       </div>
       <div class="form-row">
         <label class="form-label" for="new-password-input">
           Neues Passwort
         </label>
-        <input type="password" name="password" id="new-password-input" placeholder="Neues Passwort" required
-               class="form-input" minlength="8"
-               maxlength="12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,12}">
+        <input type="password" name="newpw1" id="new-password-input" placeholder="Neues Passwort"
+               class="form-input" minlength="8" maxlength="12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,12}"
+               [(ngModel)]="ChangePassword.newpw1" #pw1="ngModel" required
+        >
+        <span id="new-password-error" class="error-text" [hidden]="pw1.valid || pw1.pristine">New password must include at least one number, uppercase and lowercase character. It also must be at least 8 characters long.</span>
       </div>
+
       <div class="form-row">
         <label class="form-label" for="repeat-password-input">
           Passwort wiederholen
         </label>
-        <input type="password" name="password" id="repeat-password-input" placeholder="Neues Passwort wiederholen"
-               required class="form-input" minlength="8"
-               maxlength="12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,12}">>
-        <span id="new-password-error" class="error-text"></span>
+        <input type="password" name="newpw2" id="repeat-password-input" placeholder="Neues Passwort wiederholen"
+               class="form-input" minlength="8" maxlength="12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,12}"
+               [(ngModel)]="ChangePassword.newpw2" #pw2="ngModel" required
+        >
+        <span id="repeat-password-error" class="error-text" [hidden]="pw2.valid || pw2.pristine">Repeat the new password!</span>
       </div>
       <div class="form-row form-row-center">
-        <button id="save-changes-button" class="button button-submit">
-          Änderung speichern
+        <button id="save-changes-button" class="button button-submit"
+                (click)="submitFormData();"
+        >
+          Ã„nderung speichern
         </button>
       </div>
     </form>

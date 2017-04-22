@@ -9,9 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
 var OptionsComponent = (function () {
     function OptionsComponent() {
+        this.ChangePassword = { "oldpw": "", "newpw1": "", "newpw2": "" };
     }
+    OptionsComponent.prototype.submitFormData = function () {
+        if (this.changePasswordForm.valid) {
+            this.changePasswordForm.reset();
+            alert("Change was submitted.");
+        }
+    };
+    __decorate([
+        core_1.ViewChild('changePasswordForm'), 
+        __metadata('design:type', forms_1.NgForm)
+    ], OptionsComponent.prototype, "changePasswordForm", void 0);
     OptionsComponent = __decorate([
         core_1.Component({
             selector: 'my-options',

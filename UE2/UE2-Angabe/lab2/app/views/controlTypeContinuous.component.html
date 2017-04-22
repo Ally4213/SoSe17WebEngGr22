@@ -21,15 +21,17 @@
 				(chartClick)="chartClicked($event)"></canvas>
 		</div>
 	</div>
+	
 	<div class="log-and-settings-row">
 		<div class="log">
+			<div>{{lineChartLabels[0]}}</div>
 		</div>
 		<div class=description>
 		<h3> {{controlUnit.name}}</h3>
 		<h4>derzeit: {{controlUnit.current}}</h4>
 		
 		<!-- TODO: Form for linear entry -->
-		<div> Hier kommt die ng*Form für die Eingabe des neuen Eintrags!</div><input type="number" step="0.01" min="0" max="50" id="new-value" value="1"
+		<div> Hier kommt die ng*Form f&uuml:r die Eingabe des neuen Eintrags!</div><input type="number" step="0.01" min="0" max="50" id="new-value" value="1"
                      class="update-form-field form-input" name="new-value" required><input type="submit" id="submit-value" class="update-form-field button" name="submit-value"
                      value="Wert setzen">
 		</div>

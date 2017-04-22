@@ -37,13 +37,28 @@ export class ControlTypeContinuousComponent {
   
   @Input() controlUnit: ControlUnit
   
-    // lineChart
+   // lineChart
   public lineChartData:Array<any> = [
 
-    {data: [28, 48, 40, 19, 0, 27, 27], label: 'Verlauf'},
+    {data: [], label: 'Verlauf'},
+];
+  
+  ngOnInit():void{
+  if(this.controlUnit === undefined){
+    return;
+    }
+    else{
+ 
+    this.lineChartData[0].data.push(this.generateDataEntry());
+    }
+  
+  }
 
-  ];
-  public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  
+  
+  public dateTime : String = new Date().toLocaleString();
+  
+  public lineChartLabels:Array<any> = [this.dateTime];
   public lineChartOptions:any = {
     responsive: true
   };
@@ -76,6 +91,10 @@ export class ControlTypeContinuousComponent {
   public lineChartLegend:boolean = true;
   public lineChartType:string = 'line';
  
+
+
+
+ 
   public randomize():void {
     let _lineChartData:Array<any> = new Array(this.lineChartData.length);
     for (let i = 0; i < this.lineChartData.length; i++) {
@@ -86,8 +105,24 @@ export class ControlTypeContinuousComponent {
     }
     this.lineChartData = _lineChartData;
   }
+  
+  public generateCurrentDateTime() : String{
+    return  new Date().toLocaleString();
+  
+  }
+  public generateDataEntry() : number{
+   if(this.controlUnit === undefined){
+    return;
+    }
+    else{
+    return this.controlUnit.current;
+    }
+   
+  }
  
  public addEntry():void{
   /**TODO! **/
- }
+   this.lineChartLabels.push(this.generateCurrentDateTime());
+   this.lineChartData[0].data.push(this.generateDataEntry());
+   }
  }

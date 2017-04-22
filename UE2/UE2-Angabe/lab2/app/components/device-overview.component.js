@@ -26,7 +26,7 @@ var DeviceOverviewComponent = (function () {
             return;
         }
         else {
-            /** LoadSVGToDom();**/
+            LoadSVGToDom();
             console.log(this.devices);
             this.drawDeviceImgs(this.devices);
         }

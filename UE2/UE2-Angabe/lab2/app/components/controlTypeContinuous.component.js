@@ -14,9 +14,10 @@ var ControlTypeContinuousComponent = (function () {
     function ControlTypeContinuousComponent() {
         // lineChart
         this.lineChartData = [
-            { data: [28, 48, 40, 19, 0, 27, 27], label: 'Verlauf' },
+            { data: [], label: 'Verlauf' },
         ];
-        this.lineChartLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+        this.dateTime = new Date().toLocaleString();
+        this.lineChartLabels = [this.dateTime];
         this.lineChartOptions = {
             responsive: true
         };
@@ -49,6 +50,14 @@ var ControlTypeContinuousComponent = (function () {
         this.lineChartLegend = true;
         this.lineChartType = 'line';
     }
+    ControlTypeContinuousComponent.prototype.ngOnInit = function () {
+        if (this.controlUnit === undefined) {
+            return;
+        }
+        else {
+            this.lineChartData[0].data.push(this.generateDataEntry());
+        }
+    };
     ControlTypeContinuousComponent.prototype.randomize = function () {
         var _lineChartData = new Array(this.lineChartData.length);
         for (var i = 0; i < this.lineChartData.length; i++) {
@@ -59,8 +68,21 @@ var ControlTypeContinuousComponent = (function () {
         }
         this.lineChartData = _lineChartData;
     };
+    ControlTypeContinuousComponent.prototype.generateCurrentDateTime = function () {
+        return new Date().toLocaleString();
+    };
+    ControlTypeContinuousComponent.prototype.generateDataEntry = function () {
+        if (this.controlUnit === undefined) {
+            return;
+        }
+        else {
+            return this.controlUnit.current;
+        }
+    };
     ControlTypeContinuousComponent.prototype.addEntry = function () {
         /**TODO! **/
+        this.lineChartLabels.push(this.generateCurrentDateTime());
+        this.lineChartData[0].data.push(this.generateDataEntry());
     };
     __decorate([
         core_1.Input(), 

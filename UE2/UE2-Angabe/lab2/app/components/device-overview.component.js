@@ -26,7 +26,7 @@ var DeviceOverviewComponent = (function () {
             return;
         }
         else {
-            LoadSVGToDom();
+            /**LoadSVGToDom();**/
             console.log(this.devices);
             this.drawDeviceImgs(this.devices);
         }
@@ -39,9 +39,6 @@ var DeviceOverviewComponent = (function () {
         console.log("called draw_device in overview with args");
     };
     DeviceOverviewComponent.prototype.onSelect = function (device) {
-        this.selectedDevice = device;
-    };
-    DeviceOverviewComponent.prototype.onEdit = function (device) {
         this.selectedDevice = device;
     };
     DeviceOverviewComponent = __decorate([

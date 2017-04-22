@@ -35,7 +35,7 @@ export class DeviceOverviewComponent implements OnInit {
     return;
     }
     else{
-    LoadSVGToDom();
+    /**LoadSVGToDom();**/
     console.log(this.devices);
     this.drawDeviceImgs(this.devices);
     }
@@ -54,9 +54,5 @@ export class DeviceOverviewComponent implements OnInit {
     this.selectedDevice = device;
     
   }
-
-    onEdit(device: Device): void {
-        this.selectedDevice = device;
-    }
 
 }

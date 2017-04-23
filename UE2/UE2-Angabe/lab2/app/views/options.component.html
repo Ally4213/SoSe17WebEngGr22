@@ -9,7 +9,7 @@
           Altes Passwort
         </label>
         <input type="password" name="oldpw" id="old-password-input" class="form-input" placeholder="Altes Passwort"
-               [(ngModel)]="ChangePassword.oldpw" #pw0="ngModel" required
+               [(ngModel)]="formData.oldpw" #pw0="ngModel" required
         >
         <span id="old-password-error" class="error-text" [hidden]="pw0.valid || pw0.pristine">Please enter the old password!</span>
 
@@ -20,7 +20,7 @@
         </label>
         <input type="password" name="newpw1" id="new-password-input" placeholder="Neues Passwort"
                class="form-input" minlength="8" maxlength="12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,12}"
-               [(ngModel)]="ChangePassword.newpw1" #pw1="ngModel" required
+               [(ngModel)]="formData.newpw1" #pw1="ngModel" required
         >
         <span id="new-password-error" class="error-text" [hidden]="pw1.valid || pw1.pristine">New password must include at least one number, uppercase and lowercase character. It also must be at least 8 characters long.</span>
       </div>
@@ -31,7 +31,7 @@
         </label>
         <input type="password" name="newpw2" id="repeat-password-input" placeholder="Neues Passwort wiederholen"
                class="form-input" minlength="8" maxlength="12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,12}"
-               [(ngModel)]="ChangePassword.newpw2" #pw2="ngModel" required
+               [(ngModel)]="formData.newpw2" #pw2="ngModel" required
         >
         <span id="repeat-password-error" class="error-text" [hidden]="pw2.valid || pw2.pristine">Repeat the new password!</span>
       </div>

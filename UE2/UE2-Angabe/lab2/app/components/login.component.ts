@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { FooterComponent } from './footer.component';
 
 @Component({
@@ -6,7 +7,13 @@ import { FooterComponent } from './footer.component';
   templateUrl: '../app/views/login.component.html',
 })
 export class LoginComponent {
+  @ViewChild('loginForm') loginForm: NgForm;
+  formData = { "username": "", "password": ""}
 
-  LogIn = { "username": "", "password": ""}
+  submitFormData(){
+    if(this.loginForm.valid){
+      console.log(this.formData);
+    }
+  }
 
 }

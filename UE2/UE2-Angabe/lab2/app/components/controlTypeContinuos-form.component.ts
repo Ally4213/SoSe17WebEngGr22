@@ -1,4 +1,3 @@
-import { Component } from '@angular/core';
 import { Component, Input, OnInit } from '@angular/core';
 import { ControlUnit } from '../model/controlUnit';
 
@@ -15,10 +14,10 @@ export class ContinuousFormComponent {
   return this.controlUnit.current;
   }
 
-public addEntry(number:number):number{
+public addEntry(number:number): number{
   console.log("in form function add entry");
   this.controlUnit.current=number;
-  
+  return number;
   
 }
 

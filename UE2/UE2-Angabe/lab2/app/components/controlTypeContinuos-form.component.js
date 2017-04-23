@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var core_2 = require('@angular/core');
 var controlUnit_1 = require('../model/controlUnit');
 var ContinuousFormComponent = (function () {
     function ContinuousFormComponent() {
@@ -21,9 +20,10 @@ var ContinuousFormComponent = (function () {
     ContinuousFormComponent.prototype.addEntry = function (number) {
         console.log("in form function add entry");
         this.controlUnit.current = number;
+        return number;
     };
     __decorate([
-        core_2.Input(), 
+        core_1.Input(), 
         __metadata('design:type', controlUnit_1.ControlUnit)
     ], ContinuousFormComponent.prototype, "controlUnit", void 0);
     ContinuousFormComponent = __decorate([

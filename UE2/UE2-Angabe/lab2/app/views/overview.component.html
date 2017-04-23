@@ -35,14 +35,21 @@
 				<dl class="device-properties">
 					<dt>Anzeigename</dt>
 					<dd class="device-displayname">
-						<input id="input_deviceName"
+						<div [hidden]="!inputDeviceName.readOnly">
+							{{device.display_name}}
+						</div>
+
+						<input
 							   type="text"
 							   value="{{device.display_name}}"
 							   [(ngModel)]="device.display_name"
 
 							   readonly="true"
+							   [hidden]="inputDeviceName.readOnly"
 
-							   #inputName
+							   autofocus
+
+							   #inputDeviceName
 						>
 					</dd>
 					<dt>Gerätetyp</dt>
@@ -57,11 +64,11 @@
 				</div>
 			</a>
 			<ul class="device-actions">
-				<li (click)="inputName.readOnly=false; inputName.focus();" >
+				<li (click)="inputDeviceName.readOnly=false; inputDeviceName.focus(); " >
 					<img class="device-edit" src="../../images/edit.png" alt="edit device">
 				</li>
-				<li (click)="inputName.readOnly=true;">
-					<img class="device-remove" src="../../images/remove.png" alt="remove device">
+				<li (click)="inputDeviceName.readOnly=true;">
+					<img class="device-remove" src="../../images/ok.png" alt="save changes">
 				</li>
 			</ul>
 		</div>

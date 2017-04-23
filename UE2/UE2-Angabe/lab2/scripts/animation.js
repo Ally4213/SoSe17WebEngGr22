@@ -53,7 +53,7 @@ function drawCam(id, src, min, max, current, values) {
 	 */
 
 	if (current === 0) {
-		console.log("currently the camera is off");
+		
 
 		$("#" + id + " #circle8").css({
 			fill : "#000000"

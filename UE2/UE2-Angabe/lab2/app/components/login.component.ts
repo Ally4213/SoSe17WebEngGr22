@@ -1,3 +1,5 @@
+import { Component } from '@angular/core';
+import { FooterComponent } from './footer.component';
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 

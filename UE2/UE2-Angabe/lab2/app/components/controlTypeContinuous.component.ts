@@ -9,10 +9,9 @@ import { Location } from '@angular/common';
 //  styleUrls: [ '../../styles/continuousControlType.css' ]
   styles: [
     `
-    canvas{
+    #myChart{
       width:600px !important;
       height:300px !important;
-      padding-left: 10%;
     }
   .log{
   float: left;
@@ -66,9 +65,9 @@ export class ControlTypeContinuousComponent {
             datasets: this.lineChartData
         },
         options: this.lineChartOptions,
-        
+
     });
-  
+
   }
 
 

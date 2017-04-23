@@ -18,7 +18,7 @@ declare function LoadSVGToDom(): void;
 export class DeviceOverviewComponent implements OnInit {
   devices :Device[]
   selectedDevice: Device;
-  
+
   constructor(private deviceService: DeviceService) { }
   
   getDevices(): void {
@@ -66,7 +66,7 @@ export class DeviceOverviewComponent implements OnInit {
       
   onSelect(device: Device): void {
     this.selectedDevice = device;
-    
+
   }
 
 }

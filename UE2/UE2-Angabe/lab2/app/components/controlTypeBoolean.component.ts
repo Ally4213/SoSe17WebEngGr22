@@ -5,10 +5,10 @@ import { Component, Input, OnInit } from '@angular/core';
   selector: 'my-boolean-control',
   templateUrl: '../app/views/controlTypeBoolean.component.html',
   styles: [
-      `   canvas{
+      `   #myChartBoolean{
           width:600px !important;
           height:600px !important;
-          padding-left: 10%;
+          
       }
       .log{
           float: left;
@@ -34,7 +34,7 @@ export class ControlTypeBooleanComponent {
 
   @Input() controlUnit: ControlUnit
 
-  public myChart:Object;
+  public myChartBoolean:Object;
 
   // Doughnut
   public doughnutChartLabels:string[] = ['Aus', 'An'];
@@ -61,10 +61,10 @@ export class ControlTypeBooleanComponent {
   }
 
   ngAfterViewInit():void {
-    var ctx = document.getElementById("myChart");
+    var ctx = document.getElementById("myChartBoolean");
     console.log(ctx);
 
-    this.myChart = new Chart(ctx, {
+    this.myChartBoolean = new Chart(ctx, {
       type: "doughnut",
       options: {
         animation:{
@@ -101,7 +101,7 @@ export class ControlTypeBooleanComponent {
       this.doughnutChartData[this.controlUnit.current] += 1;
       this.doughnutChartLogDate.push(this.generateCurrentDateTime());
       this.doughnutChartLogState.push(this.doughnutChartLabels[this.controlUnit.current]);
-      this.myChart.update();
+      this.myChartBoolean.update();
     }
 
   }

@@ -5,7 +5,8 @@ import { DeviceService } from '../services/device.service';
 import { Component } from '@angular/core';
 import { OnInit, AfterViewInit } from '@angular/core';
 
-  
+declare function LoadSVGToDom(): void;
+
 @Component({
   selector: 'my-devices',
   templateUrl: `../app/views/overview.component.html`,

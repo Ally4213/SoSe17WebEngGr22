@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
-import { FooterComponent } from './footer.component';
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { FooterComponent } from './footer.component';
 
 @Component({
   selector: 'my-login',

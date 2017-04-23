@@ -10,8 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var controlUnit_1 = require('../model/controlUnit');
 var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
 var ControlTypeContinuousComponent = (function () {
     function ControlTypeContinuousComponent() {
+        this.formData = { "newEntry": "" };
         // lineChart
         this.lineChartData = [
             { data: [], label: 'Verlauf' },
@@ -105,6 +107,10 @@ var ControlTypeContinuousComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', controlUnit_1.ControlUnit)
     ], ControlTypeContinuousComponent.prototype, "controlUnit", void 0);
+    __decorate([
+        core_1.ViewChild('changeEntry'), 
+        __metadata('design:type', forms_1.NgForm)
+    ], ControlTypeContinuousComponent.prototype, "changeEntryForm", void 0);
     ControlTypeContinuousComponent = __decorate([
         core_1.Component({
             selector: 'my-continuous-control',

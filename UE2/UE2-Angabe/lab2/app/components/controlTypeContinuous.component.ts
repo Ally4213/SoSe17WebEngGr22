@@ -1,5 +1,6 @@
 import { ControlUnit } from '../model/controlUnit';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'my-continuous-control',
@@ -17,6 +18,9 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ControlTypeContinuousComponent {
 
   @Input() controlUnit: ControlUnit
+  
+  @ViewChild('changeEntry') changeEntryForm: NgForm;
+  formData = { "newEntry": ""}
 
   // lineChart
   public lineChartData: Array<any> = [

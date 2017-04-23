@@ -9,7 +9,7 @@ import { Location } from '@angular/common';
 //  styleUrls: [ '../../styles/continuousControlType.css' ]
   styles: [
     `
-    #myChart{
+    .myChartContinuous{
       width:600px !important;
       height:300px !important;
     }
@@ -56,7 +56,7 @@ export class ControlTypeContinuousComponent {
   }
   
   ngAfterViewInit():void {
-    var ctx = document.getElementById("myChart");
+    var ctx = document.getElementById("myChartContinuous");
     console.log(ctx);
     this.myChart = new Chart(ctx, {
         type: this.lineChartType,

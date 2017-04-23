@@ -5,10 +5,9 @@ import { Component, Input, OnInit } from '@angular/core';
   selector: 'my-boolean-control',
   templateUrl: '../app/views/controlTypeBoolean.component.html',
   styles: [
-      `   #myChartBoolean{
+      `   .myChartBoolean{
           width:600px !important;
           height:600px !important;
-          
       }
       .log{
           float: left;

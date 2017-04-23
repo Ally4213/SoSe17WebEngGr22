@@ -19,7 +19,7 @@ var ControlTypeContinuousComponent = (function () {
         this.dateTime = new Date().toLocaleString();
         this.lineChartLabels = [this.dateTime];
         this.lineChartOptions = {
-            responsive: true
+            responsive: true,
         };
         this.lineChartColors = [
             {
@@ -55,8 +55,20 @@ var ControlTypeContinuousComponent = (function () {
             return;
         }
         else {
-            this.lineChartData[0].data.push(this.generateDataEntry());
+            this.lineChartData[0].data.push(this.controlUnit.current);
         }
+    };
+    ControlTypeContinuousComponent.prototype.ngAfterViewInit = function () {
+        var ctx = document.getElementById("myChart");
+        console.log(ctx);
+        this.myChart = new Chart(ctx, {
+            type: this.lineChartType,
+            data: {
+                labels: this.lineChartLabels,
+                datasets: this.lineChartData
+            },
+            options: this.lineChartOptions,
+        });
     };
     ControlTypeContinuousComponent.prototype.randomize = function () {
         var _lineChartData = new Array(this.lineChartData.length);
@@ -71,18 +83,23 @@ var ControlTypeContinuousComponent = (function () {
     ControlTypeContinuousComponent.prototype.generateCurrentDateTime = function () {
         return new Date().toLocaleString();
     };
-    ControlTypeContinuousComponent.prototype.generateDataEntry = function () {
-        if (this.controlUnit === undefined) {
+    ControlTypeContinuousComponent.prototype.addEntry = function () {
+        //load input value
+        var inputval = $("#new-value").val();
+        var minvalue = this.controlUnit.min;
+        var maxvalue = this.controlUnit.max;
+        if (inputval > maxvalue || inputval < minvalue) {
+            $("#new-value").select();
+            $('#new-value').css('border', '1px solid #ff0000');
             return;
         }
         else {
-            return this.controlUnit.current;
+            $('#new-value').css('border', 'none');
         }
-    };
-    ControlTypeContinuousComponent.prototype.addEntry = function () {
-        /**TODO! **/
+        this.controlUnit.current = inputval;
         this.lineChartLabels.push(this.generateCurrentDateTime());
-        this.lineChartData[0].data.push(this.generateDataEntry());
+        this.lineChartData[0].data.push(inputval);
+        this.myChart.update();
     };
     __decorate([
         core_1.Input(), 
@@ -92,7 +109,9 @@ var ControlTypeContinuousComponent = (function () {
         core_1.Component({
             selector: 'my-continuous-control',
             templateUrl: '../app/views/controlTypeContinuous.component.html',
-            styles: ["\n    canvas{\n      width:600px !important;\n      height:300px !important;\n      padding-left: 10%;\n    }\n  .log{\n  float: left;\nwidth:45%;\nmargin-left:2.5% !important;\nmargin-right:2.5% !important;\nmargin-bottom: 10px;\nborder: 1px dotted black;\nheight: 180px;\n}\n\n  .description{\n  float: right;\nwidth:45%;\ntext-align: left;\nmargin-left:1.5% !important;\nmargin-right:2.5% !important;\n\n}\n  "
+            //  styleUrls: [ '../../styles/continuousControlType.css' ]
+            styles: [
+                "\n    canvas{\n      width:600px !important;\n      height:300px !important;\n      padding-left: 10%;\n    }\n  .log{\n  float: left;\nwidth:45%;\nmargin-left:2.5% !important;\nmargin-right:2.5% !important;\nmargin-bottom: 10px;\nborder: 1px dotted black;\nheight: 180px;\n}\n\n  .description{\n  float: right;\nwidth:45%;\ntext-align: left;\nmargin-left:1.5% !important;\nmargin-right:2.5% !important;\n\n}\n  "
             ],
         }), 
         __metadata('design:paramtypes', [])

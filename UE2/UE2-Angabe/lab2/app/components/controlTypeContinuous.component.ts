@@ -6,7 +6,9 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'my-continuous-control',
   templateUrl: '../app/views/controlTypeContinuous.component.html',
-  styles: [`
+//  styleUrls: [ '../../styles/continuousControlType.css' ]
+  styles: [
+    `
     canvas{
       width:600px !important;
       height:300px !important;
@@ -39,9 +41,10 @@ export class ControlTypeContinuousComponent {
 
   // lineChart
   public lineChartData: Array<any> = [
-
     { data: [], label: 'Verlauf' },
   ];
+  
+  public myChart:Object;
 
   ngOnInit(): void {
     if (this.controlUnit === undefined) {
@@ -49,18 +52,32 @@ export class ControlTypeContinuousComponent {
     }
     else {
 
-      this.lineChartData[0].data.push(this.generateDataEntry());
+      this.lineChartData[0].data.push(this.controlUnit.current);
     }
-
+  }
+  
+  ngAfterViewInit():void {
+    var ctx = document.getElementById("myChart");
+    console.log(ctx);
+    this.myChart = new Chart(ctx, {
+        type: this.lineChartType,
+        data: {
+            labels: this.lineChartLabels,
+            datasets: this.lineChartData
+        },
+        options: this.lineChartOptions,
+        
+    });
+  
   }
 
 
 
   public dateTime: String = new Date().toLocaleString();
-
   public lineChartLabels: Array<any> = [this.dateTime];
   public lineChartOptions: any = {
-    responsive: true
+    responsive: true,
+  
   };
   public lineChartColors: Array<any> = [
     { // grey
@@ -110,19 +127,27 @@ export class ControlTypeContinuousComponent {
     return new Date().toLocaleString();
 
   }
-  public generateDataEntry(): number {
-    if (this.controlUnit === undefined) {
-      return;
-    }
-    else {
-      return this.controlUnit.current;
-    }
-
-  }
 
   public addEntry(): void {
-    /**TODO! **/
+    //load input value
+    var inputval = $("#new-value").val();
+    var minvalue = this.controlUnit.min;
+    var maxvalue = this.controlUnit.max;
+    if (inputval > maxvalue || inputval < minvalue) {
+    $("#new-value").select();
+    $('#new-value').css('border', '1px solid #ff0000');
+      return;
+    }
+    else{
+    $('#new-value').css('border', 'none');
+    }
+    
+    this.controlUnit.current=inputval;
     this.lineChartLabels.push(this.generateCurrentDateTime());
-    this.lineChartData[0].data.push(this.generateDataEntry());
+    this.lineChartData[0].data.push(inputval);
+    
+    this.myChart.update();
+   
   }
+
 }

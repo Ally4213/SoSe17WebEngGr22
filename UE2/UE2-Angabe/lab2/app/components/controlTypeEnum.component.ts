@@ -25,6 +25,6 @@ export class ControlTypeEnumComponent {
   }
 
   public chartHovered(e: any): void {
-    console.l
+    console.log(e);
 
   }

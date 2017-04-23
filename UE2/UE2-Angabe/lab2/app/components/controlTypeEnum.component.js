@@ -23,7 +23,7 @@ var ControlTypeEnumComponent = (function () {
         console.log(e);
     };
     ControlTypeEnumComponent.prototype.chartHovered = function (e) {
-        console.l;
+        console.log(e);
     };
     __decorate([
         core_1.Input(), 

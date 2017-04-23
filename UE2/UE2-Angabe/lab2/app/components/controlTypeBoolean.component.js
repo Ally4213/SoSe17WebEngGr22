@@ -83,8 +83,9 @@ var ControlTypeBooleanComponent = (function () {
         core_1.Component({
             selector: 'my-boolean-control',
             templateUrl: '../app/views/controlTypeBoolean.component.html',
+            styleUrls: ['../../styles/controlType.css'],
             styles: [
-                "   .myChartBoolean{\n          width:600px !important;\n          height:600px !important;\n      }\n      .log{\n          float: left;\n          width:45%;\n          margin-left:2.5% !important;\n          margin-right:2.5% !important;\n          margin-bottom: 10px;\n          border: 1px dotted black;\n          height: 180px;\n      }\n      .description{\n          float: right;\n          width:45%;\n          text-align: left;\n          margin-left:1.5% !important;\n          margin-right:2.5% !important;\n\n      }\n    "
+                "   .myChartBoolean{\n          width:600px !important;\n          height:600px !important;\n      }\n    "
             ],
         }), 
         __metadata('design:paramtypes', [])

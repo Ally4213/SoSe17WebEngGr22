@@ -1,36 +1,16 @@
 import { ControlUnit } from '../model/controlUnit';
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'my-continuous-control',
   templateUrl: '../app/views/controlTypeContinuous.component.html',
-//  styleUrls: [ '../../styles/continuousControlType.css' ]
+  styleUrls: [ '../../styles/controlType.css' ],
   styles: [
     `
     .myChartContinuous{
       width:600px !important;
       height:300px !important;
     }
-  .log{
-  float: left;
-width:45%;
-margin-left:2.5% !important;
-margin-right:2.5% !important;
-margin-bottom: 10px;
-border: 1px dotted black;
-height: 180px;
-}
-
-  .description{
-  float: right;
-width:45%;
-text-align: left;
-margin-left:1.5% !important;
-margin-right:2.5% !important;
-
-}
   `
   ],
 })
@@ -69,8 +49,6 @@ export class ControlTypeContinuousComponent {
     });
 
   }
-
-
 
   public dateTime: String = new Date().toLocaleString();
   public lineChartLabels: Array<any> = [this.dateTime];

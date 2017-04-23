@@ -4,27 +4,11 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'my-boolean-control',
   templateUrl: '../app/views/controlTypeBoolean.component.html',
+  styleUrls: [ '../../styles/controlType.css' ],
   styles: [
       `   .myChartBoolean{
           width:600px !important;
           height:600px !important;
-      }
-      .log{
-          float: left;
-          width:45%;
-          margin-left:2.5% !important;
-          margin-right:2.5% !important;
-          margin-bottom: 10px;
-          border: 1px dotted black;
-          height: 180px;
-      }
-      .description{
-          float: right;
-          width:45%;
-          text-align: left;
-          margin-left:1.5% !important;
-          margin-right:2.5% !important;
-
       }
     `
   ],

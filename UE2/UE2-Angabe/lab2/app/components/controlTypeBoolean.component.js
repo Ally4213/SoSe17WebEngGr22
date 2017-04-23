@@ -35,9 +35,9 @@ var ControlTypeBooleanComponent = (function () {
         }
     };
     ControlTypeBooleanComponent.prototype.ngAfterViewInit = function () {
-        var ctx = document.getElementById("myChart");
+        var ctx = document.getElementById("myChartBoolean");
         console.log(ctx);
-        this.myChart = new Chart(ctx, {
+        this.myChartBoolean = new Chart(ctx, {
             type: "doughnut",
             options: {
                 animation: {
@@ -69,7 +69,7 @@ var ControlTypeBooleanComponent = (function () {
             this.doughnutChartData[this.controlUnit.current] += 1;
             this.doughnutChartLogDate.push(this.generateCurrentDateTime());
             this.doughnutChartLogState.push(this.doughnutChartLabels[this.controlUnit.current]);
-            this.myChart.update();
+            this.myChartBoolean.update();
         }
     };
     ControlTypeBooleanComponent.prototype.generateCurrentDateTime = function () {
@@ -83,8 +83,9 @@ var ControlTypeBooleanComponent = (function () {
         core_1.Component({
             selector: 'my-boolean-control',
             templateUrl: '../app/views/controlTypeBoolean.component.html',
+            styleUrls: ['../../styles/controlType.css'],
             styles: [
-                "   canvas{\n          width:600px !important;\n          height:600px !important;\n          padding-left: 10%;\n      }\n      .log{\n          float: left;\n          width:45%;\n          margin-left:2.5% !important;\n          margin-right:2.5% !important;\n          margin-bottom: 10px;\n          border: 1px dotted black;\n          height: 180px;\n      }\n      .description{\n          float: right;\n          width:45%;\n          text-align: left;\n          margin-left:1.5% !important;\n          margin-right:2.5% !important;\n\n      }\n    "
+                "   .myChartBoolean{\n          width:600px !important;\n          height:600px !important;\n      }\n    "
             ],
         }), 
         __metadata('design:paramtypes', [])

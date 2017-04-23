@@ -1,53 +1,32 @@
-<h3>Hello from the enum Type!</h3>
-
 <div *ngIf="controlUnit">
-
-	<div>ControlUnit Name: {{controlUnit.name}}</div>
-	<div>ControlUnit Current value: {{controlUnit.current}}</div>
-	<div>ControlUnit is Primary Control: {{controlUnit.primary}}</div>
-	<div>ControlUnit Values: {{controlUnit.values}}</div>
-	<div>ControlUnit min Value (should be empty here, as only
-		available in continuous): {{controlUnit.min}}</div>
-	<div>ControlUnit max Value (should be empty here, as only
-		available in continuous): {{controlUnit.max}}</div>
-
-
-
-	<div style="display: block">
-		<canvas baseChart [data]="polarAreaChartData"
-			[labels]="polarAreaChartLabels" [legend]="polarAreaLegend"
-			[chartType]="polarAreaChartType" (chartHover)="chartHovered($event)"
-			(chartClick)="chartClicked($event)"></canvas>
-	</div>
-
-
-
-	<div class="details-outer">
-		<div class="details-image-container">
-			<img class="details-image" src="../../images/placeholder_enum.PNG">
+		<div style="display: block;">
+			<canvas id="myChartEnum" class="myChartEnum" width="50" height="50"></canvas>
 		</div>
-		<div class="details-data">
-			<label class="accessibility" for="details-log">Letzte
-				Werte‰nderungen</label>
-			<textarea id="details-log" class="detail-logs"
-				placeholder="Ger‰telog" readonly rows="6">6.3.2017 10:02:32: Ein -> Standby</textarea>
-			<div class="details-settings">
-				<h3 class="details-headline">Ger‰tezustand einstellen</h3>
 
-				<form class="update-form" method="post">
-					<label class="update-form-field" id="current-value"> <span
-						class="current-value">derzeit: Standby</span>
-					</label> <label class="accessibility" for="new-value">Bitte
-						gew¸nschten Wert aus Men¸ ausw‰hlen.</label> <select id="new-value"
-						class="update-form-field form-input" name="new-value" required>
-						<option>Aus</option>
-						<option>Ein</option>
-						<option selected>Standby</option>
-					</select> <input type="submit" id="submit-value"
-						class="update-form-field button" name="submit-value"
-						value="Wert setzen">
-				</form>
+		<div class="log-and-settings-row">
+			<label class="accessibility" for="details-log">Letzte Werte√§nderungen</label>
+			  <div id="details-log" class="log">
+				   <div *ngFor="let date of chartLogDate; let state of chartLogState; let i=index">
+				{{chartLogDate[i]}} : {{chartLogState[i-1]}} -> {{chartLogState[i]}}
+				   </div>
+			  </div>
+
+			<div class=description>
+				<h3>Ger√§tezustand einstellen</h3>
+				<h4>derzeit: {{controlUnit.current}}</h4>
+
+					<label for="new-value">
+						Bitte gew√ºnschten Wert aus Men√º ausw√§hlen.
+					</label>
+					<select id="new-value" class="update-form-field form-input" name="new-value" required>
+						<option *ngFor="let value of controlUnit.values">{{value}}</option>
+					</select>
+
+					<input type="submit" id="submit-value"
+						   class="update-form-field button"
+						   name="submit-value" value="Wert setzen"
+						   (click)="addEntry()">
+
 			</div>
 		</div>
-	</div>
 </div>

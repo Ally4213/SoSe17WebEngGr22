@@ -59,7 +59,7 @@ var ControlTypeContinuousComponent = (function () {
         }
     };
     ControlTypeContinuousComponent.prototype.ngAfterViewInit = function () {
-        var ctx = document.getElementById("myChart");
+        var ctx = document.getElementById("myChartContinuous");
         console.log(ctx);
         this.myChart = new Chart(ctx, {
             type: this.lineChartType,
@@ -109,9 +109,9 @@ var ControlTypeContinuousComponent = (function () {
         core_1.Component({
             selector: 'my-continuous-control',
             templateUrl: '../app/views/controlTypeContinuous.component.html',
-            //  styleUrls: [ '../../styles/continuousControlType.css' ]
+            styleUrls: ['../../styles/controlType.css'],
             styles: [
-                "\n    canvas{\n      width:600px !important;\n      height:300px !important;\n      padding-left: 10%;\n    }\n  .log{\n  float: left;\nwidth:45%;\nmargin-left:2.5% !important;\nmargin-right:2.5% !important;\nmargin-bottom: 10px;\nborder: 1px dotted black;\nheight: 180px;\n}\n\n  .description{\n  float: right;\nwidth:45%;\ntext-align: left;\nmargin-left:1.5% !important;\nmargin-right:2.5% !important;\n\n}\n  "
+                "\n    .myChartContinuous{\n      width:600px !important;\n      height:300px !important;\n    }\n  "
             ],
         }), 
         __metadata('design:paramtypes', [])

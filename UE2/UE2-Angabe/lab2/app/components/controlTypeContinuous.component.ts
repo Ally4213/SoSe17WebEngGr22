@@ -1,37 +1,16 @@
 import { ControlUnit } from '../model/controlUnit';
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'my-continuous-control',
   templateUrl: '../app/views/controlTypeContinuous.component.html',
-//  styleUrls: [ '../../styles/continuousControlType.css' ]
+  styleUrls: [ '../../styles/controlType.css' ],
   styles: [
     `
-    canvas{
+    .myChartContinuous{
       width:600px !important;
       height:300px !important;
-      padding-left: 10%;
     }
-  .log{
-  float: left;
-width:45%;
-margin-left:2.5% !important;
-margin-right:2.5% !important;
-margin-bottom: 10px;
-border: 1px dotted black;
-height: 180px;
-}
-
-  .description{
-  float: right;
-width:45%;
-text-align: left;
-margin-left:1.5% !important;
-margin-right:2.5% !important;
-
-}
   `
   ],
 })
@@ -57,7 +36,7 @@ export class ControlTypeContinuousComponent {
   }
   
   ngAfterViewInit():void {
-    var ctx = document.getElementById("myChart");
+    var ctx = document.getElementById("myChartContinuous");
     console.log(ctx);
     this.myChart = new Chart(ctx, {
         type: this.lineChartType,
@@ -66,12 +45,10 @@ export class ControlTypeContinuousComponent {
             datasets: this.lineChartData
         },
         options: this.lineChartOptions,
-        
+
     });
-  
+
   }
-
-
 
   public dateTime: String = new Date().toLocaleString();
   public lineChartLabels: Array<any> = [this.dateTime];

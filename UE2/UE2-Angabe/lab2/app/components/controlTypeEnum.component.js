@@ -13,17 +13,68 @@ var core_1 = require('@angular/core');
 var ControlTypeEnumComponent = (function () {
     function ControlTypeEnumComponent() {
         // PolarArea
-        this.polarAreaChartLabels = ['Download Sales', 'In-Store Sales', 'Mail Sales', 'Telesales', 'Corporate Sales'];
-        this.polarAreaChartData = [300, 500, 100, 40, 120];
-        this.polarAreaLegend = true;
-        this.polarAreaChartType = 'polarArea';
+        this.chartLabels = ['geschossen', 'offen', 'halb geöffnet'];
+        /** this.controlUnit.values;**/
+        this.chartData = [0, 0, 0];
+        this.dateTime = new Date().toLocaleString();
+        this.chartLogDate = [this.dateTime];
+        this.chartLogState = [];
     }
-    // events
-    ControlTypeEnumComponent.prototype.chartClicked = function (e) {
-        console.log(e);
+    ControlTypeEnumComponent.prototype.ngOnInit = function () {
+        if (this.controlUnit === undefined) {
+            return;
+        }
+        else {
+            if ((this.controlUnit.current) > 0) {
+                this.chartData[1] = 1;
+                this.chartLogState.push(this.chartLabels[0]);
+            }
+            else {
+                this.chartData[0] = 1;
+                this.chartLogState.push(this.chartLabels[1]);
+            }
+        }
     };
-    ControlTypeEnumComponent.prototype.chartHovered = function (e) {
-        console.log(e);
+    ControlTypeEnumComponent.prototype.ngAfterViewInit = function () {
+        var ctx = document.getElementById("myChartEnum");
+        console.log(ctx);
+        this.myChart = new Chart(ctx, {
+            type: "polarArea",
+            options: {
+                animation: {
+                    animateScale: true
+                }
+            },
+            data: {
+                labels: this.chartLabels,
+                datasets: [{
+                        data: this.chartData,
+                        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+                        hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]
+                    }]
+            },
+        });
+    };
+    ControlTypeEnumComponent.prototype.addEntry = function () {
+        var inputval = $("#new-value").val();
+        this.controlUnit.current = inputval;
+        switch (inputval) {
+            case 'offen':
+                inputval = 1;
+                break;
+            case 'halb geöffnet':
+                inputval = 2;
+                break;
+            default:
+                inputval = 0;
+        }
+        this.chartData[inputval] += 1;
+        this.chartLogDate.push(this.generateCurrentDateTime());
+        this.chartLogState.push(this.controlUnit.current);
+        this.myChart.update();
+    };
+    ControlTypeEnumComponent.prototype.generateCurrentDateTime = function () {
+        return new Date().toLocaleString();
     };
     __decorate([
         core_1.Input(), 
@@ -33,6 +84,10 @@ var ControlTypeEnumComponent = (function () {
         core_1.Component({
             selector: 'my-enum-control',
             templateUrl: '../app/views/controlTypeEnum.component.html',
+            styleUrls: ['../../styles/controlType.css'],
+            styles: [
+                "\n      .myChartEnum{\n          width: 500px !important;\n          height: 500px !important;\n      }\n    "
+            ],
         }), 
         __metadata('design:paramtypes', [])
     ], ControlTypeEnumComponent);

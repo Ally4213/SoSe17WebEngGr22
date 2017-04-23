@@ -4,28 +4,11 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'my-boolean-control',
   templateUrl: '../app/views/controlTypeBoolean.component.html',
+  styleUrls: [ '../../styles/controlType.css' ],
   styles: [
-      `   canvas{
+      `   .myChartBoolean{
           width:600px !important;
           height:600px !important;
-          padding-left: 10%;
-      }
-      .log{
-          float: left;
-          width:45%;
-          margin-left:2.5% !important;
-          margin-right:2.5% !important;
-          margin-bottom: 10px;
-          border: 1px dotted black;
-          height: 180px;
-      }
-      .description{
-          float: right;
-          width:45%;
-          text-align: left;
-          margin-left:1.5% !important;
-          margin-right:2.5% !important;
-
       }
     `
   ],
@@ -34,7 +17,7 @@ export class ControlTypeBooleanComponent {
 
   @Input() controlUnit: ControlUnit
 
-  public myChart:Object;
+  public myChartBoolean:Object;
 
   // Doughnut
   public doughnutChartLabels:string[] = ['Aus', 'An'];
@@ -61,10 +44,10 @@ export class ControlTypeBooleanComponent {
   }
 
   ngAfterViewInit():void {
-    var ctx = document.getElementById("myChart");
+    var ctx = document.getElementById("myChartBoolean");
     console.log(ctx);
 
-    this.myChart = new Chart(ctx, {
+    this.myChartBoolean = new Chart(ctx, {
       type: "doughnut",
       options: {
         animation:{
@@ -101,7 +84,7 @@ export class ControlTypeBooleanComponent {
       this.doughnutChartData[this.controlUnit.current] += 1;
       this.doughnutChartLogDate.push(this.generateCurrentDateTime());
       this.doughnutChartLogState.push(this.doughnutChartLabels[this.controlUnit.current]);
-      this.myChart.update();
+      this.myChartBoolean.update();
     }
 
   }

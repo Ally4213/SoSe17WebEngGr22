@@ -13,16 +13,67 @@ var core_1 = require('@angular/core');
 var ControlTypeBooleanComponent = (function () {
     function ControlTypeBooleanComponent() {
         // Doughnut
-        this.doughnutChartLabels = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
-        this.doughnutChartData = [350, 450, 100];
-        this.doughnutChartType = 'doughnut';
+        this.doughnutChartLabels = ['Aus', 'An'];
+        this.doughnutChartData = [0, 0];
+        this.dateTime = new Date().toLocaleString();
+        this.doughnutChartLogDate = [this.dateTime];
+        this.doughnutChartLogState = [];
     }
-    // events
-    ControlTypeBooleanComponent.prototype.chartClicked = function (e) {
-        console.log(e);
+    ControlTypeBooleanComponent.prototype.ngOnInit = function () {
+        if (this.controlUnit === undefined) {
+            return;
+        }
+        else {
+            if ((this.controlUnit.current) > 0) {
+                this.doughnutChartData[1] = 1;
+                this.doughnutChartLogState.push(this.doughnutChartLabels[0]);
+            }
+            else {
+                this.doughnutChartData[0] = 1;
+                this.doughnutChartLogState.push(this.doughnutChartLabels[1]);
+            }
+        }
     };
-    ControlTypeBooleanComponent.prototype.chartHovered = function (e) {
-        console.log(e);
+    ControlTypeBooleanComponent.prototype.ngAfterViewInit = function () {
+        var ctx = document.getElementById("myChart");
+        console.log(ctx);
+        this.myChart = new Chart(ctx, {
+            type: "doughnut",
+            options: {
+                animation: {
+                    animateScale: true
+                }
+            },
+            data: {
+                labels: this.doughnutChartLabels,
+                datasets: [{
+                        data: this.doughnutChartData,
+                        backgroundColor: ["#FF6384", "#36A2EB"],
+                        hoverBackgroundColor: ["#FF6384", "#36A2EB"]
+                    }]
+            },
+        });
+    };
+    ControlTypeBooleanComponent.prototype.addEntry = function () {
+        //load input value
+        var inputval = $("#new-value").prop("checked");
+        var lamp_state;
+        if (inputval) {
+            lamp_state = 1;
+        }
+        else {
+            lamp_state = 0;
+        }
+        if (this.controlUnit.current != lamp_state) {
+            this.controlUnit.current = lamp_state;
+            this.doughnutChartData[this.controlUnit.current] += 1;
+            this.doughnutChartLogDate.push(this.generateCurrentDateTime());
+            this.doughnutChartLogState.push(this.doughnutChartLabels[this.controlUnit.current]);
+            this.myChart.update();
+        }
+    };
+    ControlTypeBooleanComponent.prototype.generateCurrentDateTime = function () {
+        return new Date().toLocaleString();
     };
     __decorate([
         core_1.Input(), 
@@ -32,6 +83,9 @@ var ControlTypeBooleanComponent = (function () {
         core_1.Component({
             selector: 'my-boolean-control',
             templateUrl: '../app/views/controlTypeBoolean.component.html',
+            styles: [
+                "   canvas{\n          width:600px !important;\n          height:600px !important;\n          padding-left: 10%;\n      }\n      .log{\n          float: left;\n          width:45%;\n          margin-left:2.5% !important;\n          margin-right:2.5% !important;\n          margin-bottom: 10px;\n          border: 1px dotted black;\n          height: 180px;\n      }\n      .description{\n          float: right;\n          width:45%;\n          text-align: left;\n          margin-left:1.5% !important;\n          margin-right:2.5% !important;\n\n      }\n    "
+            ],
         }), 
         __metadata('design:paramtypes', [])
     ], ControlTypeBooleanComponent);

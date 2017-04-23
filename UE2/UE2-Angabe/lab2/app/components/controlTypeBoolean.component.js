@@ -56,7 +56,7 @@ var ControlTypeBooleanComponent = (function () {
     };
     ControlTypeBooleanComponent.prototype.addEntry = function () {
         //load input value
-        var inputval = $("#new-value").prop("checked");
+        var inputval = $("#new-value-bool").prop("checked");
         var lamp_state;
         if (inputval) {
             lamp_state = 1;

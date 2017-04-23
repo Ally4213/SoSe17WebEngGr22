@@ -68,7 +68,7 @@ export class ControlTypeBooleanComponent {
 
   public addEntry(): void {
     //load input value
-    var inputval = $("#new-value").prop("checked");
+    var inputval = $("#new-value-bool").prop("checked");
 
     var lamp_state : number;
 

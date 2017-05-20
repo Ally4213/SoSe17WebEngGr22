@@ -18,6 +18,82 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cors());
 
+//JSON DEVICE ARRAY
+var devicelist;
+
+
+app.get('/', function(req, res){
+    res.send('Bitte verwende /api/*');
+});
+
+//LISTE ALLER DEVICES ANFORDERN
+app.get('/devices', function(req, res){
+
+    console.log('liste aller devices anfordern');
+    res.json(devicelist.devices[0]);
+
+});
+
+
+//DEVICE HINZUFÜGEN
+app.post('/device/add', function (req, res) {
+    console.log('devices hinzufügen');
+
+    var newdevice = req.body;
+
+    devicelist['devices'].push(newdevice);
+
+    res.json(newdevice);
+});
+
+//DEVICE LÖSCHEN
+app.delete('/device/delete/:_id', function (req, res) {
+
+    var req_id = req.params._id;
+
+
+
+    var array_id = null;
+    for(var i = 0; i < devicelist.devices.length; i++){
+        if(devicelist.devices[i].id == req_id){
+            array_id = i;
+            devicelist.devices.splice(array_id, 1);
+            break;
+        }
+    }
+    console.log('device löschen. id: ' + req_id);
+    res.json(devicelist.devices[array_id]);
+
+
+
+    console.log(devicelist.devices)
+});
+
+
+//DEVICE BEARBEITEN
+app.put('/device/edit/:_id', function (req, res) {
+
+    var req_id = req.params._id;
+
+    console.log('device bearbeiten. id: ' + req_id);
+
+    var array_id = null;
+    for(var i = 0; i < devicelist.devices.length; i++){
+        if(devicelist.devices[i].id == req_id){
+            array_id = i;
+            devicelist.devices.splice(array_id, 1, req.body);
+            break;
+        }
+    }
+
+
+    res.json(req.body);
+    console.log(devicelist.devices)
+});
+
+
+
+
 //TODO Implementieren Sie hier Ihre REST-Schnittstelle
 /* Ermöglichen Sie wie in der Angabe beschrieben folgende Funktionen:
  *  Abrufen aller Geräte als Liste
@@ -49,6 +125,18 @@ app.post("/updateCurrent", function (req, res) {
 function readUser() {
     "use strict";
     //TODO Lesen Sie die Benutzerdaten aus dem login.config File ein.
+
+    //login.config in json formatiert
+    fs.readFile('./resources/login.config', 'utf8', function(err, data) {
+        if (err) throw err;
+
+
+        var user = JSON.parse(data);
+        console.log('user auslesen');
+        console.log(user);
+
+    });
+
 }
 
 function readDevices() {
@@ -58,21 +146,45 @@ function readDevices() {
      * Damit die Simulation korrekt funktioniert, müssen Sie diese mit nachfolgender Funktion starten
      *      simulation.simulateSmartHome(devices.devices, refreshConnected);
      * Der zweite Parameter ist dabei eine callback-Funktion, welche zum Updaten aller verbundenen Clients dienen soll.
+
      */
+
+     fs.readFile('./resources/devices.json', 'utf8', function(err, data) {
+        if (err) throw err;
+
+             console.log('devices abrufen');
+             var devices = JSON.parse(data);
+             devicelist = devices;
+
+             simulation.simulateSmartHome(devices.devices, refreshConnected);
+    });
+
+    function refreshConnected() {
+        "use strict";
+        //TODO Übermitteln Sie jedem verbundenen Client die aktuellen Gerätedaten über das Websocket
+        /*
+         * Jedem Client mit aktiver Verbindung zum Websocket sollen die aktuellen Daten der Geräte übermittelt werden.
+         * Dabei soll jeder Client die aktuellen Werte aller Steuerungselemente von allen Geräte erhalten.
+         * Stellen Sie jedoch auch sicher, dass nur Clients die eingeloggt sind entsprechende Daten erhalten.
+         *
+         * Bitte beachten Sie, dass diese Funktion von der Simulation genutzt wird um periodisch die simulierten Daten an alle Clients zu übertragen.
+         */
+
+
+        console.log('CALLBACK............');
+
+    }
+
+
+
+
+
+
+
 }
 
 
-function refreshConnected() {
-    "use strict";
-    //TODO Übermitteln Sie jedem verbundenen Client die aktuellen Gerätedaten über das Websocket
-    /*
-     * Jedem Client mit aktiver Verbindung zum Websocket sollen die aktuellen Daten der Geräte übermittelt werden.
-     * Dabei soll jeder Client die aktuellen Werte aller Steuerungselemente von allen Geräte erhalten.
-     * Stellen Sie jedoch auch sicher, dass nur Clients die eingeloggt sind entsprechende Daten erhalten.
-     *
-     * Bitte beachten Sie, dass diese Funktion von der Simulation genutzt wird um periodisch die simulierten Daten an alle Clients zu übertragen.
-     */
-}
+
 
 
 var server = app.listen(8081, function () {

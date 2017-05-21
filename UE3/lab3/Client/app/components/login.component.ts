@@ -17,7 +17,7 @@ export class LoginComponent {
     loginError: boolean = false;
   username: string ="";
   password: string="";
-  response: object;
+  response: any;
 
     constructor(private router: Router, private loginService: LoginService,) {
     }

@@ -1,3 +1,4 @@
+import { SidebarService } from '../services/sideBar.service';
 import {Component, OnInit} from "@angular/core";
 
 @Component({
@@ -9,10 +10,12 @@ export class SidebarComponent implements OnInit{
 
   failed_logins: number = 0;
   server_start: Date = new Date();
+  currentUser:string="Admin";
 
-  constructor(){}
+  constructor(private sidebarService: SidebarService){}
 
   ngOnInit(): void {
-    //TODO Lesen Sie über die REST-Schnittstelle den Status des Servers aus und speichern Sie diesen in obigen Variablen
+    this.sidebarService.failedLogins().subscribe(data =>this.failed_logins =data.failedLogins );
+    this.sidebarService.currentUser().subscribe(data =>this.currentUser =data.currentUser );
   }
 }

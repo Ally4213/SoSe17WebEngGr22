@@ -33,6 +33,27 @@ app.get('/', function(req, res){
 });
 
 
+//Failed Logins show
+app.get('/failedLogins', function(req, res){
+
+    console.log('show number of Failed Logins');
+    if(failedlogins===undefined){
+    	failedlogins=0;
+    }
+    console.log(failedlogins)
+    res.json({failedLogins: failedlogins});
+
+});
+
+//Current User show
+app.get('/currentUser', function(req, res){
+
+    console.log('show current User');
+    console.log(jsonuser.username)
+    res.json({currentUser: jsonuser.username});
+
+});
+
 //AUTHENTICATE USER
  app.post('/authenticate', function (req, res) {
 	 console.log("received rq:");

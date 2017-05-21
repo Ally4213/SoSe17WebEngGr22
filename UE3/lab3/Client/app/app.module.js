@@ -23,6 +23,7 @@ var navigation_component_1 = require('./components/navigation.component');
 var overview_component_1 = require('./components/overview.component');
 var options_component_1 = require('./components/options.component');
 var device_service_1 = require('./services/device.service');
+var sideBar_service_1 = require('./services/sideBar.service');
 var device_parser_service_1 = require('./services/device-parser.service');
 var device_details_component_1 = require("./components/device-details.component");
 var continuous_device_details_component_1 = require("./components/continuous-device-details.component");
@@ -62,6 +63,7 @@ var AppModule = (function () {
                 device_service_1.DeviceService,
                 device_parser_service_1.DeviceParserService,
                 login_service_1.LoginService,
+                sideBar_service_1.SidebarService,
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

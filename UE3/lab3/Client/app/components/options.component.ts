@@ -3,6 +3,7 @@ import { Headers, Http, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { NgForm } from '@angular/forms';
 import {LoginService} from '../services/login.service';
+
 declare var $: any;
 
 @Component({
@@ -15,7 +16,7 @@ export class OptionsComponent implements OnInit {
   updateError: boolean;
   oldPW: string;
   newPW: string;
-  response: object;
+  response: any;
 
   constructor(private http: Http, private loginService: LoginService) {
   };

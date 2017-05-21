@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
 var overview_component_1 = require("./overview.component");
 var device_service_1 = require("../services/device.service");
 var OverlayComponent = (function () {
@@ -36,9 +37,19 @@ var OverlayComponent = (function () {
      * @param form
      */
     OverlayComponent.prototype.onSubmit = function (form) {
-        form.reset();
+        var _this = this;
         this.overviewComponent.closeAddDeviceWindow();
-        //TODO Lesen Sie Daten aus der Form aus und übertragen Sie diese an Ihre REST-Schnittstelle
+        var displayname = $('#displayname-input').val();
+        var typeInput = $('#type-input').val();
+        var typeName = $('typename-input').val();
+        var elemName = $('elementname-input').val();
+        var elemType = $('#elementtype-input').val();
+        console.log(displayname + " ," + typeInput + " ," + typeName + " ," + elemName + " ," + elemType);
+        this.deviceService.addDevice(displayname, typeInput, typeName, elemName, elemType).subscribe(function (data) {
+            _this.response = data;
+            console.log(_this.response);
+        });
+        form.reset();
     };
     OverlayComponent.prototype.isSelected = function (type) {
         return type == this.device_types[0];
@@ -52,6 +63,10 @@ var OverlayComponent = (function () {
     OverlayComponent.prototype.isContinuousSelected = function () {
         return this.controlUnitType_selected === this.controlUnit_types[2];
     };
+    __decorate([
+        core_1.ViewChild('addForm'), 
+        __metadata('design:type', forms_1.NgForm)
+    ], OverlayComponent.prototype, "loginForm", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', overview_component_1.OverviewComponent)

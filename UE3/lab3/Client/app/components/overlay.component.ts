@@ -1,10 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {OverviewComponent} from "./overview.component";
-import {DeviceService} from "../services/device.service";
-import {Device} from "../model/device";
-import {ControlUnit} from "../model/controlUnit";
-import {ControlType} from "../model/controlType";
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { OverviewComponent } from "./overview.component";
+import { DeviceService } from "../services/device.service";
+import { Device } from "../model/device";
+import { ControlUnit } from "../model/controlUnit";
+import { ControlType } from "../model/controlType";
+
+declare var $: any;
 
 @Component({
   moduleId: module.id,
@@ -12,7 +14,8 @@ import {ControlType} from "../model/controlType";
   templateUrl: '../views/overlay.component.html'
 })
 export class OverlayComponent implements OnInit {
-
+    response: any;
+  @ViewChild('addForm') loginForm: NgForm;
   @Input()
   overviewComponent: OverviewComponent = null;
 
@@ -46,11 +49,19 @@ export class OverlayComponent implements OnInit {
    * @param form
    */
   onSubmit(form: NgForm): void {
-    form.reset();
+    
     this.overviewComponent.closeAddDeviceWindow();
-
-    //TODO Lesen Sie Daten aus der Form aus und übertragen Sie diese an Ihre REST-Schnittstelle
-
+    var displayname = $('#displayname-input').val();
+    var typeInput = $('#type-input').val();
+    var typeName = $('typename-input').val();
+    var elemName = $('elementname-input').val();
+    var elemType = $('#elementtype-input').val();
+    console.log(displayname +" ," + typeInput +" ," + typeName +" ," + elemName +" ," + elemType);
+    this.deviceService.addDevice(displayname, typeInput, typeName, elemName, elemType).subscribe(data => {
+    this.response = data;
+      console.log(this.response)
+    });
+    form.reset();
   }
 
   isSelected(type: string): boolean {

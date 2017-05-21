@@ -123,7 +123,8 @@ app.post('/changepassword', function (req, res) {
 app.get('/devices', function(req, res){
 
     console.log('liste aller devices anfordern');
-    res.json(devicelist.devices[0]);
+
+    res.json({devices: devicelist.devices});
 
 });
 
@@ -133,7 +134,23 @@ app.post('/device/add', function (req, res) {
     console.log('devices hinzufügen');
 
     var newdevice = req.body;
+    newdevice.id="IAMAUNIQUEID";
+    newdevice.description="";
+    
+    switch(newdevice.type) {
+    case "Heizkoerpertehremo":
+    	newdevice.image='';
+    	newdevice.image_alt='hurenkund';
+    break;
+    default:
+    	newdevice.image='';
+    	newdevice.image_alt='';
+    	break;
+    }
 
+    console.log("adding device:");
+    console.log(newdevice);
+    
     devicelist['devices'].push(newdevice);
 
     res.json(newdevice);

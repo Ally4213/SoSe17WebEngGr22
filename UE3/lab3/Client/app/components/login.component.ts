@@ -4,6 +4,8 @@ import {NgForm} from '@angular/forms';
 
 import {LoginService} from '../services/login.service';
 
+declare var $: any;
+
 @Component({
     moduleId: module.id,
     selector: 'my-login',

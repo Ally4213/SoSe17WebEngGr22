@@ -1,5 +1,6 @@
 import {Device} from '../model/device';
 import {Injectable} from '@angular/core';
+import { Headers, Http } from '@angular/http';
 
 import {DEVICES} from '../resources/mock-device';
 import {DeviceParserService} from './device-parser.service';

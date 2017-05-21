@@ -10,22 +10,53 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var forms_1 = require('@angular/forms');
+var login_service_1 = require('../services/login.service');
 var LoginComponent = (function () {
-    function LoginComponent(router) {
+    function LoginComponent(router, loginService) {
         this.router = router;
+        this.loginService = loginService;
+        this.formData = { "username": "", "password": "" };
         this.loginError = false;
+        this.username = "";
+        this.password = "";
     }
+    LoginComponent.prototype.ngDoCheck = function () {
+        this.username = $('#username-input').val();
+        this.password = $('#password-input').val();
+    };
     LoginComponent.prototype.onSubmit = function (form) {
         //TODO Überprüfen Sie die Login-Daten über die REST-Schnittstelle und leiten Sie den Benutzer bei Erfolg auf die Overview-Seite weiter
-        this.router.navigate(['/overview']);
+        var _this = this;
+        // $http.post("http://localhost:8081/login").then(function() {}, function() {});
+        //var req = {method:"POST", url:"http://localhost:8081/asdfasdf", headers: {"Content-Type": "application/json"}, data: {username:"huhu", password:"hahaa"}};
+        //this.http.post('http://localhost:8081/login').map(response => response.json().data);
+        //(req).then(function(r) {}, function(r) {});
+        this.loginService.login(this.username, this.password)
+            .subscribe(function (data) {
+            _this.response = data;
+            console.log(_this.response);
+            if (data.success === true) {
+                _this.router.navigate(['/overview']);
+            }
+            else {
+                alert(data.message);
+                console.log(data.message);
+            }
+        });
+        //  this.router.navigate(['/overview']);
     };
+    __decorate([
+        core_1.ViewChild('loginForm'), 
+        __metadata('design:type', forms_1.NgForm)
+    ], LoginComponent.prototype, "loginForm", void 0);
     LoginComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'my-login',
             templateUrl: '../views/login.html'
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
+        __metadata('design:paramtypes', [router_1.Router, login_service_1.LoginService])
     ], LoginComponent);
     return LoginComponent;
 }());

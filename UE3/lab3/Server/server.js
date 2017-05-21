@@ -35,8 +35,11 @@ app.get('/', function(req, res){
 
 //AUTHENTICATE USER
  app.post('/authenticate', function (req, res) {
-     var name = jsonuser.user.username;
-     var pass = jsonuser.user.password;
+	 console.log("received rq:");
+     console.log(req.body);
+	 
+     var name = jsonuser.username;
+     var pass = jsonuser.password;
 
 
      if(req.body.username != name){
@@ -113,7 +116,7 @@ app.post('/changepassword', function (req, res) {
 
         }
     }
-
+});
 
 
 //LISTE ALLER DEVICES ANFORDERN
@@ -221,9 +224,9 @@ function readUser() {
         if (err) throw err;
 
 
-        var user = JSON.parse(data);
+        jsonuser = JSON.parse(data);
         console.log('user auslesen');
-        console.log(user);
+        console.log(jsonuser);
 
     });
 

@@ -21,10 +21,55 @@ app.use(cors());
 //JSON DEVICE ARRAY
 var devicelist;
 
+//JSON USERDATA
+var jsonuser;
+
 
 app.get('/', function(req, res){
     res.send('Bitte verwende /api/*');
 });
+
+
+//AUTHENTICATE USER
+ app.post('/authenticate', function (req, res) {
+     var name = jsonuser.username;
+     var pass = jsonuser.password;
+
+
+     if(req.body.username != name){
+
+         res.json({ success: false, message: 'Authentication failed. User not found.' });
+
+     } else {
+         if (req.body.password != pass) {
+
+             res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+
+         } else {
+             var secretKey = uuid.v4();
+             var claims = {
+                 sub: name,
+                 iss: 'smarthome'
+             }
+
+             var token = jwt.sign(claims,secretKey);
+
+             console.log("token: " + token);
+             res.json({
+                 success: true,
+                 message: 'Enjoy your token!',
+                 token: token
+             });
+
+         }
+     }
+
+
+
+
+ });
+
+
 
 //LISTE ALLER DEVICES ANFORDERN
 app.get('/devices', function(req, res){

@@ -24,6 +24,9 @@ var devicelist;
 //JSON USERDATA
 var jsonuser;
 
+//FAILED LOGIN COUNTER
+var failedlogins = 0;
+
 
 app.get('/', function(req, res){
     res.send('Bitte verwende /api/*');
@@ -32,16 +35,20 @@ app.get('/', function(req, res){
 
 //AUTHENTICATE USER
  app.post('/authenticate', function (req, res) {
-     var name = jsonuser.username;
-     var pass = jsonuser.password;
+     var name = jsonuser.user.username;
+     var pass = jsonuser.user.password;
 
 
      if(req.body.username != name){
+
+         failedlogins++;
 
          res.json({ success: false, message: 'Authentication failed. User not found.' });
 
      } else {
          if (req.body.password != pass) {
+
+             failedlogins++;
 
              res.json({ success: false, message: 'Authentication failed. Wrong password.' });
 
@@ -68,6 +75,44 @@ app.get('/', function(req, res){
 
 
  });
+
+
+
+//CHANGE PASSWORD
+app.post('/changepassword', function (req, res) {
+    var name = jsonuser.username;
+    var pass = jsonuser.password;
+
+    var newpass = req.body.newpassword;
+
+
+    if(req.body.username != name){
+
+
+        res.json({ success: false, message: 'Authentication failed. User not found.' });
+
+    } else {
+        if (req.body.password != pass) {
+
+
+            res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+
+        } else {
+            var obj = {
+                "username" : name,
+                "password" : newpass
+            };
+            var newdata = JSON.stringify(obj);
+
+            fs.writeFile('./resources/login.config', newdata);
+            jsonuser = obj;
+            res.send("success! new password: " + newpass);
+            console.log("NEW USERDATA: ");
+            console.log(jsonuser);
+
+
+        }
+    }
 
 
 

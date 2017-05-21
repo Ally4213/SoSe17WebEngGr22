@@ -1,0 +1,1 @@
+Die Ordner "lab3/client/app/node_modules" sowie "lab3/server/node_modules" wurden absichtlich, wie in Abgabemodalität beschrieben, ausgelassen!!!

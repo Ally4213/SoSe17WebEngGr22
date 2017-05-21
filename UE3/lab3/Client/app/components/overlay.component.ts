@@ -15,7 +15,7 @@ declare var $: any;
 })
 export class OverlayComponent implements OnInit {
     response: any;
-  @ViewChild('addForm') loginForm: NgForm;
+  @ViewChild('addForm') addForm: NgForm;
   @Input()
   overviewComponent: OverviewComponent = null;
 

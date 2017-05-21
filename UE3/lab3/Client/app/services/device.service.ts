@@ -22,59 +22,24 @@ export class DeviceService {
   return  this.http.get('http://localhost:8081/devices').map((res) => {return res.json()}).toPromise();
   }
   
-  getDevices(): Promise<Device[]> {
-    //TODO Lesen Sie die Geräte über die REST-Schnittstelle aus
-    /*
-     * Verwenden Sie das DeviceParserService um die via REST ausgelesenen Geräte umzuwandeln.
-     * Das Service ist dabei bereits vollständig implementiert und kann wie unten demonstriert eingesetzt werden.
-     */
-    
-        let serverdata = new Array();
-    
-//return this.http.get('http://localhost:8081/devices').toPromise().then(function(data):Device[]  {
-//   let serverdata = new Array();
-//   let rdata = data.json();
-//
-//    let x = Promise.resolve(rdata).then(devices => {
-//      for (let i = 0; i < devices.length; i++) {
-//        serverdata[i] = this.parserService.parseDevice(devices[i]);
-//      }
-//      return devices;
-//    });
-//    
-//    console.log(x);
-//    
-//   return serverdata;
-//  
-//  
-//} );
-    
+  getDevices(): Promise<Device[]> {  
     let x = Promise.resolve(this.http.get('http://localhost:8081/devices').map(resp => resp.json().devices).toPromise()).then(devices => {
       for (let i = 0; i < devices.length; i++) {
         devices[i] = this.parserService.parseDevice(devices[i]);
       }
       return devices;
     });
-    
-    console.log(x);
-    
    return x;
     
     
     
-    
-    
-//    console.log(serverdata);
-//    
+// OLD STATIC CODE:   
 //    let x = Promise.resolve(DEVICES).then(devices => {
 //      for (let i = 0; i < devices.length; i++) {
 //        devices[i] = this.parserService.parseDevice(devices[i]);
 //      }
 //      return devices;
-//    });
-//    
-//    console.log(x);
-//    
+//    }); 
 //   return x;
   }
 

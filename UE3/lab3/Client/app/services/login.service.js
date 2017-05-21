@@ -21,9 +21,11 @@ var LoginService = (function () {
         return this.http.post('http://localhost:8081/authenticate', JSON.stringify({ username: username, password: password }), options)
             .map(function (res) { return res.json(); });
     };
-    LoginService.prototype.logout = function () {
-        // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
+    LoginService.prototype.changePW = function (oldPW, newPW) {
+        var headers = new http_1.Headers({ 'content-type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post('http://localhost:8081/changepassword', JSON.stringify({ oldPassword: oldPW, password: newPW }), options)
+            .map(function (res) { return res.json(); });
     };
     LoginService = __decorate([
         core_1.Injectable(), 

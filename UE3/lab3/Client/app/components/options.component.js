@@ -11,13 +11,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
+var forms_1 = require('@angular/forms');
+var login_service_1 = require('../services/login.service');
 var OptionsComponent = (function () {
-    function OptionsComponent(http) {
+    function OptionsComponent(http, loginService) {
         this.http = http;
+        this.loginService = loginService;
     }
     ;
     OptionsComponent.prototype.ngOnInit = function () {
         this.updateError = false;
+    };
+    OptionsComponent.prototype.ngDoCheck = function () {
+        this.oldPW = $('#old-password-input').val();
+        this.newPW = $('#new-password-input').val();
     };
     OptionsComponent.prototype.equalsPW = function (form) {
         if (!form || !form.value || !form.value["repeat-password"] || !form.value["new-password"]) {
@@ -30,19 +37,34 @@ var OptionsComponent = (function () {
      * @param form
      */
     OptionsComponent.prototype.onSubmit = function (form) {
-        //TODO Lesen Sie Daten aus der Form aus und übertragen Sie diese an Ihre REST-Schnittstelle
+        var _this = this;
+        this.loginService.changePW(this.oldPW, this.newPW)
+            .subscribe(function (data) {
+            _this.response = data;
+            console.log(_this.response);
+            if (data.success === true) {
+                alert(data.message);
+            }
+            else {
+                alert(data.message);
+            }
+        });
         if (!form) {
             return;
         }
         form.resetForm();
     };
+    __decorate([
+        core_1.ViewChild('optionsForm'), 
+        __metadata('design:type', forms_1.NgForm)
+    ], OptionsComponent.prototype, "optionsForm", void 0);
     OptionsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'my-options',
             templateUrl: '../views/options.html'
         }), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, login_service_1.LoginService])
     ], OptionsComponent);
     return OptionsComponent;
 }());

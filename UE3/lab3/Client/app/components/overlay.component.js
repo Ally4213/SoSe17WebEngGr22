@@ -66,7 +66,7 @@ var OverlayComponent = (function () {
     __decorate([
         core_1.ViewChild('addForm'), 
         __metadata('design:type', forms_1.NgForm)
-    ], OverlayComponent.prototype, "loginForm", void 0);
+    ], OverlayComponent.prototype, "addForm", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', overview_component_1.OverviewComponent)

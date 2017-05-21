@@ -83,39 +83,35 @@ app.get('/', function(req, res){
 
 //CHANGE PASSWORD
 app.post('/changepassword', function (req, res) {
-    var name = jsonuser.username;
+	console.log(req.body);
+  
     var pass = jsonuser.password;
 
-    var newpass = req.body.newpassword;
+    var newpass = req.body.password;
 
 
-    if(req.body.username != name){
-
-
-        res.json({ success: false, message: 'Authentication failed. User not found.' });
-
-    } else {
-        if (req.body.password != pass) {
+   
+        if (req.body.oldPassword != pass) {
 
 
             res.json({ success: false, message: 'Authentication failed. Wrong password.' });
 
         } else {
             var obj = {
-                "username" : name,
-                "password" : newpass
+                "username" : jsonuser.username,
+                "password" :newpass
             };
             var newdata = JSON.stringify(obj);
 
             fs.writeFile('./resources/login.config', newdata);
             jsonuser = obj;
-            res.send("success! new password: " + newpass);
+            res.json({ success: true, message: 'Success! Changed password' });
             console.log("NEW USERDATA: ");
             console.log(jsonuser);
 
 
         }
-    }
+    
 });
 
 
@@ -138,9 +134,25 @@ app.post('/device/add', function (req, res) {
     newdevice.description="";
     
     switch(newdevice.type) {
-    case "Heizkoerpertehremo":
-    	newdevice.image='';
-    	newdevice.image_alt='hurenkund';
+    case "Beleuchtung":
+    	newdevice.image='images/bulb.svg';
+    	newdevice.image_alt='Gluehbirne als Indikator fuer Aktivierung';
+    break;
+    case "Heizk&ouml;perthermostat":
+    	newdevice.image='images/thermometer.svg';
+    	newdevice.image_alt='Thermometer zur Temperaturanzeige';
+    break;
+    case "Heizk&ouml;perthermostat":
+    	newdevice.image='images/roller_shutter.svg';
+    	newdevice.image_alt='Rolladen';
+    break;
+    case "&Uuml;berwachungskamera":
+    	newdevice.image='images/webcam.svg';
+    	newdevice.image_alt='UE-Kamera';
+    break;
+    case "Webcam":
+    	newdevice.image='images/webcam.svg';
+    	newdevice.image_alt='UE-Kamera';
     break;
     default:
     	newdevice.image='';

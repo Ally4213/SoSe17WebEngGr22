@@ -23,49 +23,21 @@ var DeviceService = (function () {
         return this.http.get('http://localhost:8081/devices').map(function (res) { return res.json(); }).toPromise();
     };
     DeviceService.prototype.getDevices = function () {
-        //TODO Lesen Sie die Geräte über die REST-Schnittstelle aus
-        /*
-         * Verwenden Sie das DeviceParserService um die via REST ausgelesenen Geräte umzuwandeln.
-         * Das Service ist dabei bereits vollständig implementiert und kann wie unten demonstriert eingesetzt werden.
-         */
         var _this = this;
-        var serverdata = new Array();
-        //return this.http.get('http://localhost:8081/devices').toPromise().then(function(data):Device[]  {
-        //   let serverdata = new Array();
-        //   let rdata = data.json();
-        //
-        //    let x = Promise.resolve(rdata).then(devices => {
-        //      for (let i = 0; i < devices.length; i++) {
-        //        serverdata[i] = this.parserService.parseDevice(devices[i]);
-        //      }
-        //      return devices;
-        //    });
-        //    
-        //    console.log(x);
-        //    
-        //   return serverdata;
-        //  
-        //  
-        //} );
         var x = Promise.resolve(this.http.get('http://localhost:8081/devices').map(function (resp) { return resp.json().devices; }).toPromise()).then(function (devices) {
             for (var i = 0; i < devices.length; i++) {
                 devices[i] = _this.parserService.parseDevice(devices[i]);
             }
             return devices;
         });
-        console.log(x);
         return x;
-        //    console.log(serverdata);
-        //    
+        // OLD STATIC CODE:   
         //    let x = Promise.resolve(DEVICES).then(devices => {
         //      for (let i = 0; i < devices.length; i++) {
         //        devices[i] = this.parserService.parseDevice(devices[i]);
         //      }
         //      return devices;
-        //    });
-        //    
-        //    console.log(x);
-        //    
+        //    }); 
         //   return x;
     };
     DeviceService.prototype.getDevice = function (id) {

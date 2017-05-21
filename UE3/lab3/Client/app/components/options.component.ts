@@ -1,45 +1,65 @@
-import {Component, OnInit} from '@angular/core';
-import {Headers, Http} from '@angular/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Headers, Http, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import {NgForm} from '@angular/forms';
-
+import { NgForm } from '@angular/forms';
+import {LoginService} from '../services/login.service';
+declare var $: any;
 
 @Component({
-    moduleId: module.id,
-    selector: 'my-options',
-    templateUrl: '../views/options.html'
+  moduleId: module.id,
+  selector: 'my-options',
+  templateUrl: '../views/options.html'
 })
 export class OptionsComponent implements OnInit {
+  @ViewChild('optionsForm') optionsForm: NgForm;
+  updateError: boolean;
+  oldPW: string;
+  newPW: string;
+  response: object;
 
-    updateError: boolean;
+  constructor(private http: Http, private loginService: LoginService) {
+  };
 
-    constructor(private http: Http) {
-    };
+  ngOnInit(): void {
+    this.updateError = false;
+  }
 
-    ngOnInit(): void {
-        this.updateError = false;
+  ngDoCheck() {
+    this.oldPW = $('#old-password-input').val();
+    this.newPW = $('#new-password-input').val();
+
+  }
+
+  public equalsPW(form: NgForm): boolean {
+    if (!form || !form.value || !form.value["repeat-password"] || !form.value["new-password"]) {
+      return false;
     }
+    return form.value["repeat-password"] === form.value["new-password"];
+  }
 
-    public equalsPW(form: NgForm): boolean {
-        if (!form || !form.value || !form.value["repeat-password"] || !form.value["new-password"]) {
-            return false;
+
+  /**
+   * Liest das alte Passwort, das neue Passwort und dessen Wiederholung ein und übertraegt diese an die REST-Schnittstelle
+   * @param form
+   */
+  onSubmit(form: NgForm): void {
+
+    this.loginService.changePW(this.oldPW, this.newPW)
+      .subscribe(data => {
+      this.response = data;
+        console.log(this.response)
+        if (data.success === true) {
+          alert(data.message);
         }
-        return form.value["repeat-password"] === form.value["new-password"];
-    }
-
-
-    /**
-     * Liest das alte Passwort, das neue Passwort und dessen Wiederholung ein und übertraegt diese an die REST-Schnittstelle
-     * @param form
-     */
-    onSubmit(form: NgForm): void {
-
-        //TODO Lesen Sie Daten aus der Form aus und übertragen Sie diese an Ihre REST-Schnittstelle
-        if (!form) {
-            return;
+        else {
+          alert(data.message);
         }
-        form.resetForm();
-
+      });
+    if (!form) {
+      return;
     }
+    form.resetForm();
+
+  }
 
 }

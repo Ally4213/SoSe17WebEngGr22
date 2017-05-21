@@ -26,12 +26,7 @@ var LoginComponent = (function () {
         this.password = $('#password-input').val();
     };
     LoginComponent.prototype.onSubmit = function (form) {
-        //TODO Überprüfen Sie die Login-Daten über die REST-Schnittstelle und leiten Sie den Benutzer bei Erfolg auf die Overview-Seite weiter
         var _this = this;
-        // $http.post("http://localhost:8081/login").then(function() {}, function() {});
-        //var req = {method:"POST", url:"http://localhost:8081/asdfasdf", headers: {"Content-Type": "application/json"}, data: {username:"huhu", password:"hahaa"}};
-        //this.http.post('http://localhost:8081/login').map(response => response.json().data);
-        //(req).then(function(r) {}, function(r) {});
         this.loginService.login(this.username, this.password)
             .subscribe(function (data) {
             _this.response = data;
@@ -44,7 +39,6 @@ var LoginComponent = (function () {
                 console.log(data.message);
             }
         });
-        //  this.router.navigate(['/overview']);
     };
     __decorate([
         core_1.ViewChild('loginForm'), 

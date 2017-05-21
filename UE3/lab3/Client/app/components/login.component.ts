@@ -27,13 +27,6 @@ export class LoginComponent {
   }
   
     onSubmit(form: NgForm): void {
-        //TODO Überprüfen Sie die Login-Daten über die REST-Schnittstelle und leiten Sie den Benutzer bei Erfolg auf die Overview-Seite weiter
-      
-      // $http.post("http://localhost:8081/login").then(function() {}, function() {});
-
-      //var req = {method:"POST", url:"http://localhost:8081/asdfasdf", headers: {"Content-Type": "application/json"}, data: {username:"huhu", password:"hahaa"}};
-      //this.http.post('http://localhost:8081/login').map(response => response.json().data);
-        //(req).then(function(r) {}, function(r) {});
        
         this.loginService.login(this.username, this.password)
             .subscribe(data => {this.response = data;
@@ -47,6 +40,5 @@ export class LoginComponent {
             }
             });
       
-      //  this.router.navigate(['/overview']);
     }
 }

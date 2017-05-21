@@ -141,7 +141,7 @@ app.post('/device/add', function (req, res) {
 
 //DEVICE LÖSCHEN
 app.delete('/device/delete/:_id', function (req, res) {
-
+console.log('called delete');
     var req_id = req.params._id;
 
 

@@ -6,12 +6,13 @@ import {DEVICES} from '../resources/mock-device';
 import {DeviceParserService} from './device-parser.service';
 
 import 'rxjs/add/operator/toPromise';
-
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map'
 
 @Injectable()
 export class DeviceService {
 
-    constructor(private parserService: DeviceParserService) {
+    constructor(private parserService: DeviceParserService, private http :Http) {
     }
 
     //TODO Sie können dieses Service benutzen, um alle REST-Funktionen für die Smart-Devices zu implementieren
@@ -34,5 +35,14 @@ export class DeviceService {
         return this.getDevices()
             .then(devices => devices.find(device => device.id === id));
     }
+  
+  removeDevice(id: string) {
+   console.log("in device service removing device");
+console.log('called delete on id>' + id);
+        return this.http.delete('http://localhost:8081/device/delete/a79acab4-e88b-11e6-bf01-fe55135034f3').map(res => res.toString());
 
-}
+    }
+  
+  }
+
+

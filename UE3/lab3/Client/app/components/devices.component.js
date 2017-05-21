@@ -112,7 +112,13 @@ var DevicesComponent = (function () {
      * @param device
      */
     DevicesComponent.prototype.removeDevice = function (device) {
-        //TODO Löschen Sie das angegebene Geräte über die REST-Schnittstelle
+        var index = this.findStatus(device);
+        if (index >= 0) {
+            console.log("removing device with id: " + device.id);
+            this.deviceService.removeDevice(device.id).subscribe(function () {
+                $("[data-device-id='" + device.id + "']").hide();
+            });
+        }
     };
     /**
      * Setz das Input-Feld wieder auf ein Label zurück und beendet so das Bearbeiten

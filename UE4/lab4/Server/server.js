@@ -16,7 +16,14 @@ var cors = require('cors');
 var uuid = require('uuid');
 
 var https = require('https');
-var twitter = require('twitter');
+var Twitter = require('twitter');
+
+var twitter_client = new Twitter({
+  consumer_key: 'GZ6tiy1XyB9W0P4xEJudQ',
+  consumer_secret: 'gaJDlW0vf7en46JwHAOkZsTHvtAiZ3QUd2mD1x26J9w',
+  access_token_key: '1366513208-MutXEbBMAVOwrbFmZtj1r4Ih2vcoHGHE2207002',
+  access_token_secret: 'RMPWOePlus3xtURWRVnv1TgrjTyK7Zk33evp4KKyA'
+});
 
 var user;
 var devices;
@@ -73,11 +80,18 @@ app.post("/createDevice", function (req, res) {
                 devices.devices.push(device);
                 res.json({status: 200, message: devices});
                 sendCreate(JSON.stringify(device));
+
                 //TODO erstellen Sie einen Publication String für Twitter und senden Sie diesen über die Twitter Bibliothek ab
                 //Tipps:
                 //  - die benötigte Bibliothek ist bereits eingebunden
                 //  - siehe https://www.npmjs.com/package/twitter für eine Beschreibung der Bibliothek
                 //  - verwenden Sie getTwitterPublicationString(groupNum, uuid, date) um den Publication String zu erstellen
+
+                twitter_client.post('statuses/update', {status: getTwitterPublicationString(22, device.id, new Date)},  function(error, tweet, response) {
+                  if(error) throw error;
+                  console.log(tweet);  // Tweet body.
+                  console.log(response);  // Raw response object.
+                });
             }
         });
     } else {

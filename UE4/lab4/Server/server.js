@@ -18,6 +18,16 @@ var uuid = require('uuid');
 var https = require('https');
 var Twitter = require('twitter');
 
+/**
+ * Zertifikat laden
+ */
+const credentials = {
+    key: fs.readFileSync('cert/device.key'),
+    cert: fs.readFileSync('cert/device.crt'),
+    requestCert: false,
+    rejectUnauthorized: false
+};
+
 var twitter_client = new Twitter({
   consumer_key: 'GZ6tiy1XyB9W0P4xEJudQ',
   consumer_secret: 'gaJDlW0vf7en46JwHAOkZsTHvtAiZ3QUd2mD1x26J9w',
@@ -587,6 +597,23 @@ function getTwitterPublicationString(groupNum, uuid, date) {
  * Erzeugt einen http Server auf Port 8081 und stellt die REST-Schnittstelle zur Verfügung
  * @type {http.Server}
  */
+
+
+/**
+ * HTTPS server 
+ */
+
+var httpsserver = https.createServer(credentials, app).listen(8080, function () {
+    "use strict";
+    readUser();
+    readDevices();
+
+    var host = httpsserver.address().address;
+    var port = httpsserver.address().port;
+
+    console.log("Big Smart Home SECURE Server listening at http://%s:%s", host, port);
+});
+
 var server = app.listen(8081, function () {
 
     "use strict";

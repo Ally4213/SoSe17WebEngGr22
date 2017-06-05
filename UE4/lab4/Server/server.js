@@ -18,6 +18,14 @@ var uuid = require('uuid');
 var https = require('https');
 var Twitter = require('twitter');
 
+var user;
+var devices;
+var invalid_tokens = [];
+
+var system_start = new Date();
+var failed_logins = 0;
+
+
 /**
  * Zertifikat laden
  */
@@ -35,12 +43,7 @@ var twitter_client = new Twitter({
   access_token_secret: 'RMPWOePlus3xtURWRVnv1TgrjTyK7Zk33evp4KKyA'
 });
 
-var user;
-var devices;
-var invalid_tokens = [];
 
-var system_start = new Date();
-var failed_logins = 0;
 
 app.set('secret', "superSecret");
 app.use(bodyParser.urlencoded({extended: true}));
@@ -90,18 +93,17 @@ app.post("/createDevice", function (req, res) {
                 devices.devices.push(device);
                 res.json({status: 200, message: devices});
                 sendCreate(JSON.stringify(device));
-
                 //TODO erstellen Sie einen Publication String für Twitter und senden Sie diesen über die Twitter Bibliothek ab
                 //Tipps:
                 //  - die benötigte Bibliothek ist bereits eingebunden
                 //  - siehe https://www.npmjs.com/package/twitter für eine Beschreibung der Bibliothek
                 //  - verwenden Sie getTwitterPublicationString(groupNum, uuid, date) um den Publication String zu erstellen
-
-                twitter_client.post('statuses/update', {status: getTwitterPublicationString(22, device.id, new Date)},  function(error, tweet, response) {
+		twitter_client.post('statuses/update', {status: getTwitterPublicationString(22, device.id, new Date)},  function(error, tweet, response) {
                   if(error) throw error;
                   console.log(tweet);  // Tweet body.
                   console.log(response);  // Raw response object.
                 });
+
             }
         });
     } else {
@@ -598,7 +600,6 @@ function getTwitterPublicationString(groupNum, uuid, date) {
  * @type {http.Server}
  */
 
-
 /**
  * HTTPS server 
  */
@@ -626,4 +627,3 @@ var server = app.listen(8081, function () {
     console.log("Big Smart Home Server listening at http://%s:%s", host, port);
 
 });
-

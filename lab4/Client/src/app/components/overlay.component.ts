@@ -40,7 +40,6 @@ export class OverlayComponent implements OnInit {
     var newDevices = sessionStorage.getItem("SPARQ_labels").split(",");
     for(var i=0;i<newDevices.length;i++)
         this.device_types.push(newDevices[i]);
-
   }
 
   /**
